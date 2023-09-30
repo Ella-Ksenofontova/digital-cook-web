@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>О приложении</title>
+        <link rel="stylesheet" href="digital_cook_sheet.css">
+        <link type="Image/x-icon" href="favicon.png" rel="icon">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class = "header">
+            <button class="menu-button"></button>
+            <h1 class="header"><span id="name">Цифровой повар - подбор блюд по ингредиентам</span></h1>
+        </div>
+        <nav>
+            <a class="nav-button" hidden title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
+                <span aria-hidden="true">©</span>
+                <span class="visually-hidden">Ссылки на авторов стороннего контента</span>
+            </a><br>
+            <a class="nav-button" hidden title="На главную" href="./index.html" tabindex="-1">
+                <img src="./homepage.png" height="0" width="0" class="homepage-link" aria-hidden="true">
+                <span class="visually-hidden">Вернуться на главную</span>
+            </a>
+        </nav>
+        <main class="secondary-page">
+           <h1 class="secondary-page">О приложении</h1> 
+           Это веб-приложение позволяет Вам подобрать блюда на основе ваших предпочтений - любимых кухонь и ингредиентов, а также предпочитаемых категорий блюд.<br>
+           Автор приложения - <a href="https://github.com/Ella-Ksenofontova">Элла Ксенофонтова</a>. <br>
+           Отзывы и пожелания присылайте <a href = "mailto:ellaksenofontova@gmail.com?subject=О &#8220;Цифровом поваре&#8220;">на мой email</a>.
+        </main>
+        <script type="module">
+            import {changeMainHeight, toggleNavButtons} from "./nav_and_main_functions.js";
+
+            let menu = document.querySelector(".menu-button");
+            menu.addEventListener("click", toggleNavButtons);
+
+            window.addEventListener("resize", changeMainHeight);
+
+            document.addEventListener("DOMContentLoaded", changeMainHeight);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,437 @@
+/*General*/
+div.header {
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 3px;
+    margin-right: 15%;
+    margin-left: 2%;
+
+    min-width: 550px;
+    box-sizing: border-box;
+
+    background-color: #409ce3;
+    color: white;
+    
+    text-align: center;
+
+    min-height: 100px;
+}
+
+body {
+    margin: 0;
+    
+    background: url("./food.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: "Segoe UI", Verdana;
+    font-size: 1rem;
+}
+
+main {
+    margin-right: 15%;
+    margin-left: 2%;
+    margin-top: 0;
+    box-sizing: border-box;
+
+    min-width: 550px;
+
+    padding: 20px;
+
+    text-align: center;
+    background-color: #6fb0e1;
+}
+
+main.secondary-page {
+    padding-left: 10%;
+    padding-right: 30%;
+
+    text-align: left;
+}
+
+button {
+    margin-top: 7%;
+    margin-bottom: 7%
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/*Navigation*/
+
+.menu-button,
+.menu-button:hover,
+.menu-button:active {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+
+    background-color: transparent;
+    background-image: url("./menu_web_version.png");
+    background-repeat: no-repeat;
+   
+    border: 0;
+}
+
+
+nav {
+    position: absolute;
+    left: 3%;
+}
+
+.nav-button {
+    display: inline-block;
+    width: 0;
+    height: 0;
+
+    position: sticky;
+    z-index: 1000;
+
+    transition-property: font-size, width, height;
+    transition-duration: 1s;
+
+    margin: 5px 0;
+
+    font-size: 0;
+    background-color:#409ce3;
+    text-decoration: none;
+}
+
+@media(prefers-reduced-motion) {
+    .nav-button {
+        transition: none;
+    }
+}
+
+.homepage-link {
+    width: 0;
+    height: 0;
+
+    transition-property: width, height;
+    transition-duration: 1.5s;
+
+    transition-timing-function: ease-out;
+}
+
+/*Buttons*/
+
+button, #continue, #ingredients-info, .nav-button {
+    color: white;
+    
+    border: 1px solid #3782bc;
+    border-radius: 10px;
+    
+    font-weight: bold;
+    text-align: center;
+}
+
+button, #continue {
+    min-width: 110px;
+    min-height: 20px;
+    width: 13%;
+    height: 7%;
+
+    background-color:#409ce3
+}
+
+#continue, #back-button {
+    margin: 20px 10px;
+}
+
+#back-button {
+    width: 13%;
+}
+
+button:hover, 
+button:active, 
+#continue:hover,
+#continue:active,
+#ingredients-info:hover,
+#ingredients-info:active,
+.nav-button:hover,
+.nav-button:active {
+    background-color:#357aaf;
+    border: 1px solid #2f6e9e
+}
+
+#ingredients-info {
+    position: fixed;
+    left: 3%;
+    margin-right: 20px;
+
+    width: 60px;
+
+    background-color:#438ec8;
+    
+    text-align: center;
+
+    text-decoration: none;
+}
+
+#ingredients-info.small {
+    width: 40px;
+    height: 40px;
+}
+
+.choose-all-button {
+    min-width: 130px;
+}
+
+/*Images*/
+
+img.left { 
+    position: absolute;
+    width: 75px;
+    height: 75px;
+
+    margin-right: 15%;
+    left: 3%;
+
+    vertical-align: middle;
+
+    background-color: #409ce3;
+}
+
+/*Headers*/
+
+h1, h2, h3 {
+    margin: 10px auto;
+    width: 75%;
+
+    color: white;
+    text-align: left;
+}
+
+h1.header {
+    margin-top: 0;
+
+    text-align: center;
+}
+
+h1.secondary-page {
+    margin-left: 0;
+    margin-top: 0;
+}
+
+/*Form*/
+
+form {
+    margin: 0 auto;
+    width: 75%;
+    box-sizing: content-box;
+
+    line-height: 1.5;
+    text-align: left;
+}
+
+/*Ingredients info*/
+
+dl {
+    text-align: left;
+    margin-left: 5%
+}
+
+dt {
+    font-weight: bold;
+    color: white
+}
+
+figure {
+    margin-top: 0;
+    margin-left: 15px;
+
+    padding-right: 15px;
+
+    width: 200px;
+}
+
+figure.recipe {
+    float: right;
+}
+
+figure.small {
+    width: 100px;
+}
+
+figcaption {
+    width: 220px;
+    margin-left: -30px;
+    text-align: center;
+}
+
+figcaption.recipe {
+    width: 250px;
+}
+
+figcaption.small {
+    width: 115px;
+}
+
+.img_of_ingredient_with_info {
+    margin-right: 20px;
+}
+
+.ingredients-info-div {
+    display: grid;
+    grid-template-columns: 33vw 200px;
+    grid-column-gap: 30px;
+
+    grid-column-start: start;
+}
+
+/*Ingredients menu*/
+
+.ingredients-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 25px auto auto;
+    justify-content: start;
+    column-gap: 15px;
+    align-items: center;
+
+    box-sizing: content-box;
+
+    margin: 10px 0;
+
+    width: 75%;
+}
+
+.ingredient-category-title,
+.no-ingredients-title,
+.ingredient-name {
+    grid-column-start: span 2;
+}
+
+.ingredient-category-title {
+    margin-left: -5px;
+}
+
+.ingredient-checkbox {
+    height: 13px;
+    width: 13px;
+}
+
+/*Dishes menu*/
+
+.dishes-container {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: max-content 100px;
+    column-gap: 20px;
+    align-items: center;
+
+    margin: 10px auto;
+    justify-content: start;
+    width: 75%;
+}
+
+
+.dish-item {
+    display: list-item;
+    list-style-type: disc;
+}
+
+.search-field {
+    display: block;
+    width: 300px;
+}
+
+/*Recipe and ingredients exclusion pop-ups*/
+
+.recipe-pop-up, .exclude-ingredients-pop-up {
+    z-index: 1000;
+    position: fixed;
+
+    margin: 0 auto;
+
+    display: table-cell;
+    vertical-align: middle;
+
+    padding: 20px;
+
+    background-color: #53a0dc;
+    border-radius: 10px;
+}
+
+.recipe-pop-up {
+    max-width: 75%;
+    top: 20px;
+}
+
+.exclude-ingredients-pop-up {
+    top: calc(50% - 100px);
+    left: calc(50% - 210px);
+
+    width: 420px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.recipe-title, .exclude-ingredients-title {
+    margin: 0;
+
+    color: white;
+    font-weight: bold;
+}
+
+.exclude-ingredients-title {
+    text-align: center;
+}
+
+.frame-for-pop-up {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #184a70;
+    opacity: 0.5
+}
+
+.close-button,
+.close-button:hover,
+.close-button:active {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+
+    background-color: transparent;
+    background-image: url("./close.png");
+    background-repeat: no-repeat;
+   
+    border: 0;
+}
+
+.img_of_dish, .img_of_ingredient_with_info {
+    float: right;
+
+    border-radius: 20px;
+}
+
+.exclude-ingredients-panel {
+    width: 350px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 120px 120px;
+    column-gap: 10px;
+    justify-content: center;
+}
