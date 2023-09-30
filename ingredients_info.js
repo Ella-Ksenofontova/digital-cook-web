@@ -26,7 +26,7 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     let figureForIngredient = document.createElement("figure");
 
     let imgForIngredient = document.createElement("img");
-    imgForIngredient.src = `./Ingredients_with_info_images/${ingredientsNames[i]}.jpg`
+    imgForIngredient.src = `./assets/Ingredients_with_info_images/${ingredientsNames[i]}.jpg`
     imgForIngredient.height = "100";
     imgForIngredient.width = "200";
     imgForIngredient.className = "img_of_ingredient_with_info";

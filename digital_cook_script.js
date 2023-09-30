@@ -494,7 +494,7 @@ export class App {
         let linkToIngredientInfo = document.createElement("a");
         
         let infoImg = document.createElement("img");
-        infoImg.src = "./info.png";
+        infoImg.src = "./assets/info.png";
         infoImg.height = "50";
         infoImg.width = "50";
         infoImg.title = "Справка по ингредиентам";

@@ -138,7 +138,7 @@ function addDishFigure(dishName) {
     if ( dishName.includes('"') ) {
         dishName = dishName.replace(/"/g, "");
     }
-    let dishImageSrc = `./Dish_images/${dishName}.jpg`;
+    let dishImageSrc = `./assets/Dish_images/${dishName}.jpg`;
 
     let dishImage = document.createElement("img");
     dishImage.src = dishImageSrc;
