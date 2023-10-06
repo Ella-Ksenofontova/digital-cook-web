@@ -247,6 +247,8 @@ dt {
 }
 
 figure {
+    float: right;
+
     margin-top: 0;
     margin-left: 15px;
 
@@ -283,7 +285,7 @@ figcaption.small {
 
 .ingredients-info-div {
     display: grid;
-    grid-template-columns: 33vw 200px;
+    grid-template-columns: auto 200px;
     grid-column-gap: 30px;
 
     grid-column-start: start;
