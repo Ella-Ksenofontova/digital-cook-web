@@ -697,6 +697,7 @@ export class App {
 
             for (let dish of usageOfIngredient) {
                 let dishInfo = DISHES.find(item => item[0].toLowerCase() == dish.toLowerCase());
+
                 let dishType = dishInfo[3];
                 let cuisine = dishInfo[4];
 
@@ -743,9 +744,8 @@ export class App {
         }
 
         window.scrollTo(0, 0);
-        changeMainHeight();
-
         this.addBackButton();
+        changeMainHeight();
     }
 
     /**

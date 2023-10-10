@@ -57,7 +57,7 @@ export function changeMainHeight() {
     if (mainHeight > innerHeight - headerHeight) {
         main.style.height = mainHeight + 20 + "px";
     } else {
-        main.style.height = innerHeight - headerHeight - 10 + "px"
+        main.style.height = innerHeight - headerHeight + "px"
     }
 }
 
