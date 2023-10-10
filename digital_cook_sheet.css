@@ -359,7 +359,10 @@ figcaption.small {
     z-index: 1000;
     position: fixed;
 
+    max-height: 80%;
+
     margin: 0 auto;
+    overflow: auto;
 
     display: table-cell;
     vertical-align: middle;
