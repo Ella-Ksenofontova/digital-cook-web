@@ -29,7 +29,7 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     imgForIngredient.src = `./assets/Ingredients_with_info_images/${ingredientsNames[i]}.jpg`
     imgForIngredient.height = "100";
     imgForIngredient.width = "200";
-    imgForIngredient.className = "img_of_ingredient_with_info";
+    imgForIngredient.className = "img-of-ingredient-with-info";
     figureForIngredient.append(imgForIngredient);
 
     let captionOfIngredient = document.createElement("figcaption");
@@ -42,7 +42,7 @@ for (let i = 0; i < ingredientsNames.length; i++) {
 }
 
 function changeSizeOfImages() {
-    let imagesOfIngredients = document.querySelectorAll(".img_of_ingredient_with_info");
+    let imagesOfIngredients = document.querySelectorAll(".img-of-ingredient-with-info");
     let figures = document.querySelectorAll("figure");
     let figcaptions = document.querySelectorAll("figcaption");
 

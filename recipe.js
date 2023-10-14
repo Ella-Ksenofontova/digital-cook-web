@@ -145,7 +145,7 @@ function addDishFigure(dishName) {
     dishImage.itemprop = "image";
     dishImage.height = "100";
     dishImage.width = "200";
-    dishImage.className = "img_of_dish";
+    dishImage.className = "img-of-dish";
 
     dishFigure.append(dishImage);
 

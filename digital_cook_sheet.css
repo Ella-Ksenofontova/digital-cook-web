@@ -281,7 +281,7 @@ figcaption.small {
     width: 115px;
 }
 
-.img_of_ingredient_with_info {
+.img-of-ingredient-with-info {
     margin-right: 20px;
 }
 
@@ -428,7 +428,8 @@ figcaption.small {
     border: 0;
 }
 
-.img_of_dish, .img_of_ingredient_with_info {
+.img-of-dish, .img-of-ingredient-with-info {
+    min-width: 1px;
     float: right;
 
     border-radius: 20px;
