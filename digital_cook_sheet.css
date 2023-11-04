@@ -109,6 +109,12 @@ nav {
     text-decoration: none;
 }
 
+.nav-button#homepage {
+    background-image: url("./assets/homepage.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 @media(prefers-reduced-motion) {
     .nav-button {
         transition: none;
