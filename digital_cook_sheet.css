@@ -1,5 +1,7 @@
+@import url("./dark_mode.css");
+
 /*General*/
-div.header {
+header {
     display: grid;
     grid-template-columns: 100px auto 100px;
     justify-content: space-between;
@@ -69,6 +71,33 @@ button {
     width: 1px;
 }
 
+/*Theme Toggler*/
+
+.theme-toggler {
+    width: 70px;
+    height: 30px;
+
+    border-radius: 15px;
+    background-color: white;
+
+    transition: all .5s ease;
+}
+
+.thumb {
+    height: 26px;
+    width: 26px;
+
+    position: relative;
+
+    border-radius: 15px;
+    border: 2px solid #b0e0e6;
+    background-image: url("./assets/sun.png");
+    background-size: cover;
+    cursor: pointer;
+
+    transition: all .5s ease;
+}
+
 /*Navigation*/
 
 .menu-button,
@@ -113,12 +142,6 @@ nav {
     background-image: url("./assets/homepage.png");
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-@media(prefers-reduced-motion) {
-    .nav-button {
-        transition: none;
-    }
 }
 
 .homepage-link {
@@ -448,4 +471,12 @@ figcaption.small {
     grid-template-columns: 120px 120px;
     column-gap: 10px;
     justify-content: center;
+}
+
+/*Media Queries*/
+
+@media(prefers-reduced-motion) {
+    .nav-button, .theme-toggler, .thumb, .homepage-link {
+        transition: none;
+    }
 }

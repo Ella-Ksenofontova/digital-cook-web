@@ -15,10 +15,14 @@
         </style>
     </head>
     <body>
-        <div class = "header">
+        <header>
             <button class="menu-button"></button>
             <h1 class="header"><span id="name">Цифровой повар - подбор блюд по ингредиентам</span></h1>
-        </div>
+            <div class="theme-toggler">
+                <span class="visually-hidden">Сменить тему приложения</span>
+                <div class="thumb"></div>
+            </div>
+        </header>
         <nav>
             <a class="nav-button" hidden title="О приложении" href="./info_about_app.html" tabindex="-1">
                 <span aria-hidden="true">ℹ</span>
@@ -37,6 +41,7 @@
                 <li><a href="https://www.flaticon.com/ru/authors/anggara">Автор иконки "инфо", которую я использую для справки по ингредиентам</a></li>
                 <li><a href="https://www.flaticon.com/authors/icon-wind">Автор иконки "меню"</a></li>
                 <li><a href="https://www.flaticon.com/ru/authors/andrean-prabowo">Ссылка на автора иконки "закрыть" (используется при показе рецептов)</a></li>
+                <li><a href="https://www.flaticon.com/authors/freepik">Автор иконок солнца и луны на переключателе тем</a></li>
             </ol>
 
             <h1>Ссылки на сайты, с которых я взяла рецепты</h1>
@@ -60,5 +65,6 @@
             let main = document.querySelector("main");
             main.style.textAlign = "left";
         </script>
+        <script src="./theme_toggle.js"></script>
     </body>
 </html>

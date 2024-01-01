@@ -8,10 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class = "header">
+        <header>
             <button class="menu-button"></button>
             <h1 class="header"><span id="name">Цифровой повар - подбор блюд по ингредиентам</span></h1>
-        </div>
+            <div class="theme-toggler">
+                <span class="visually-hidden">Сменить тему приложения</span>
+                <div class="thumb"></div>
+            </div>
+        </header>
         <nav>
             <a class="nav-button" hidden title="О приложении" href="./info_about_app.html" tabindex="-1">
                 <span aria-hidden="true">ℹ</span>
@@ -40,5 +44,6 @@
 
             document.addEventListener("DOMContentLoaded", changeMainHeight);
         </script>
+        <script src="./theme_toggle.js"></script>
     </body>
 </html>

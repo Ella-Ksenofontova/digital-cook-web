@@ -1,0 +1,120 @@
+/*General*/
+[data-theme="dark"] header {
+    background-color: navy;
+}
+
+[data-theme="dark"] body {   
+    background: url("./assets/food_dark.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+[data-theme="dark"] main {
+    background-color: #3F48CC;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] a:hover,
+[data-theme="dark"] a:active,
+[data-theme="dark"] a:visited {
+    color: aliceblue;
+}
+
+/*Theme Toggler*/
+
+[data-theme="dark"] .theme-toggler {
+    background-color: #3F48CC;
+}
+
+[data-theme="dark"] .thumb {
+    left: 44px;
+
+    background-image: url("./assets/night-mode.png");
+    border: 2px solid #3F48CC;
+}
+
+/*Navigation*/
+
+[data-theme="dark"] .menu-button,
+[data-theme="dark"] .menu-button:hover,
+[data-theme="dark"] .menu-button:active {
+    background-color: transparent;
+    background-image: url("./assets/menu_web_version_dark.png");
+    background-repeat: no-repeat;
+
+    border: 0;
+}
+
+[data-theme="dark"] .nav-button {
+    background-color:navy;
+    border: 0;
+}
+
+[data-theme="dark"] .nav-button#homepage {
+    background-image: url("./assets/homepage_dark.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/*Buttons*/
+
+[data-theme="dark"] button, 
+[data-theme="dark"] #continue, 
+[data-theme="dark"] #ingredients-info, 
+[data-theme="dark"] .nav-button {
+    color: white;
+    
+    border: 1px solid #271790;
+    border-radius: 10px;
+    
+    font-weight: bold;
+    text-align: center;
+}
+
+[data-theme="dark"] button, 
+[data-theme="dark"] #continue {
+    background-color:navy
+}
+
+[data-theme="dark"] button:hover, 
+[data-theme="dark"] button:active, 
+[data-theme="dark"] #continue:hover,
+[data-theme="dark"] #continue:active,
+[data-theme="dark"] #ingredients-info:hover,
+[data-theme="dark"] #ingredients-info:active,
+[data-theme="dark"] .nav-button:hover,
+[data-theme="dark"] .nav-button:active {
+    background-color:rgb(2, 2, 94);
+    border: 1px solid rgb(2, 2, 58)
+}
+
+[data-theme="dark"] #ingredients-info {
+    background-color:navy
+}
+
+/*Recipe and ingredients exclusion pop-ups*/
+
+[data-theme="dark"] .recipe-pop-up, 
+[data-theme="dark"] .exclude-ingredients-pop-up {
+    background-color: rgb(58, 6, 201);
+    border: 1px solid navy;
+}
+
+[data-theme="dark"] .close-button,
+[data-theme="dark"] .close-button:hover,
+[data-theme="dark"] .close-button:active {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+
+    background-color: transparent;
+    background-image: url("./assets/close_dark.png");
+    background-repeat: no-repeat;
+   
+    border: 0;
+}
