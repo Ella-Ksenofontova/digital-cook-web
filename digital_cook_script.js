@@ -685,7 +685,7 @@ export class App {
         for (let ingredient of this.excludedIngredients){
             let usageOfIngredient = INGREDIENTS.find(item => item[0] == ingredient)[1].split("; ");
             for (let dish of usageOfIngredient) {
-                if (!dishesWithExcludedIngredients.includes(dish)) {
+                if (!dishesWithExcludedIngredients.includes(dish.toLowerCase())) {
                     dishesWithExcludedIngredients.push(dish.toLowerCase());
                 }
             }
@@ -702,7 +702,7 @@ export class App {
                 let cuisine = dishInfo[4];
 
                 if (this.chosenDishTypes.includes(dishType) && this.chosenCuisines.includes(cuisine) && 
-                !appropriateDishes.includes(capitalize(dish)) && !dishesWithExcludedIngredients.includes(dish)) {
+                !appropriateDishes.includes(capitalize(dish)) && !dishesWithExcludedIngredients.includes(dish.toLowerCase())) {
                     appropriateDishes.push(capitalize(dish));
                 }
             }

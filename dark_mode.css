@@ -115,6 +115,7 @@
     background-color: transparent;
     background-image: url("./assets/close_dark.png");
     background-repeat: no-repeat;
+    background-size: cover;
    
     border: 0;
 }
