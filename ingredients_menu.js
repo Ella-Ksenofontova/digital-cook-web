@@ -51,25 +51,29 @@ export function findMatchingIngredients(event) {
         }
     }
 
-    changeChooseAllButtonsVisibility();
+    changeChooseAllDivVisibility();
 }
 
-function changeChooseAllButtonsVisibility() {
-    let chooseAllButtons = document.querySelectorAll(".choose-all-button");
-    for (let chooseAllButton of chooseAllButtons) {
-        let firstCheckboxOfCategory = chooseAllButton.nextElementSibling;
-        let checkboxesOfCategory = getCheckboxesAndButtonOfCategory(firstCheckboxOfCategory).checkboxes;
+function changeChooseAllDivVisibility() {
+    let chooseAllDivs = document.querySelectorAll(".choose-all-div");
+    for (let i = 0; i < chooseAllDivs.length; i++) {
+        let chooseAllDiv = chooseAllDivs[i];
+        let firstCheckboxOfCategory = chooseAllDiv.nextElementSibling;
+        let checkboxesOfCategory = getCheckboxesAndCheckboxOfCategory(firstCheckboxOfCategory).checkboxes;
 
         let visibilityOfCheckboxes = checkboxesOfCategory.map(item => item.hidden);
         if (visibilityOfCheckboxes.includes(true)) {
-            chooseAllButton.hidden = true;
-            chooseAllButton.insertAdjacentHTML("afterend", "<div class='placeholder'></div>");
-        } else if (chooseAllButton.hidden) {
-            chooseAllButton.hidden = false;
-            let placeholder = document.querySelector(".placeholder");
+            chooseAllDiv.hidden = true;
+            let placeholder = document.querySelector(`#placeholder${i + 1}`);
+            if (!placeholder) {
+                chooseAllDiv.insertAdjacentHTML("afterend", `<div id="placeholder${i + 1}"></div>`);
+            }
+        } else if (chooseAllDiv.hidden) {
+            chooseAllDiv.hidden = false;
+            let placeholder = document.querySelector(`#placeholder${i + 1}`);
             placeholder.remove();
         }
-    }
+    }   
 }
 
 /**
@@ -90,12 +94,21 @@ export function createIngredientsCategoryTitle(ingredientsCategories, ingredient
     let ingredientsOfCategory = appropriateIngredients[ingredientCategoryNumber];
 
      if (ingredientsOfCategory.length > 0) {
-        let chooseAllButton = document.createElement("button");
-        chooseAllButton.type = "button";
-        chooseAllButton.className = "choose-all-button";
-        chooseAllButton.innerHTML = "Выбрать всё";
+        let chooseAllDiv = document.createElement("div");
+        chooseAllDiv.className = "choose-all-div";
 
-        ingredientsContainer.append(chooseAllButton);
+        let chooseAllCheckbox = document.createElement("input");
+        chooseAllCheckbox.type = "checkbox";
+        chooseAllCheckbox.className = "choose-all-checkbox";
+        chooseAllCheckbox.id = `choose-all-checkbox${ingredientCategoryNumber}`
+        chooseAllDiv.append(chooseAllCheckbox);
+
+        let chooseAllLabel = document.createElement("label");
+        chooseAllLabel.htmlFor = `choose-all-checkbox${ingredientCategoryNumber}`;
+        chooseAllLabel.innerHTML = "Все";
+        chooseAllDiv.append(chooseAllLabel)
+
+        ingredientsContainer.append(chooseAllDiv)
      }  
 }
 
@@ -119,43 +132,22 @@ export function showHiddenCheckboxes() {
  */
 
 export function toggleAllFromCategory(event) {
-    if (event.target.className == "choose-all-button") {
-        let chooseAllButton = event.target;
-        let nextElem = chooseAllButton.nextElementSibling;
+    if (event.target.className == "choose-all-checkbox") {
+        let chooseAllButton = event.target
+        let nextElem = chooseAllButton.parentNode.nextElementSibling;
 
         while(nextElem?.tagName != "H3" && nextElem) {
-            if (nextElem.tagName == "INPUT" && chooseAllButton.innerHTML == "Выбрать всё") {
+            if (nextElem.tagName == "INPUT" && chooseAllButton.checked) {
                 nextElem.checked = true;
-            } else if (nextElem.tagName == "INPUT" && chooseAllButton.innerHTML == "Отменить выбор") {
+            } else if (nextElem.tagName == "INPUT" && !chooseAllButton.checked) {
                 nextElem.checked = false;
             }
             nextElem = nextElem.nextElementSibling;
         }
-
-        if (chooseAllButton.innerHTML == "Выбрать всё") {
-            chooseAllButton.innerHTML = "Отменить выбор";
-        } else {
-            chooseAllButton.innerHTML = "Выбрать всё";
-        }
     }
 }
 
-export function changeChooseAllButtonText(event) {
-    if (event.target.className == "ingredient-checkbox") {
-        let currentCheckbox = event.target;
-        let elementsOfCategory = getCheckboxesAndButtonOfCategory(currentCheckbox);
-
-        let statesOfCheckboxes = elementsOfCategory.checkboxes.map(item => item.checked);
-
-        if (!statesOfCheckboxes.includes(true) && elementsOfCategory.chooseAllButton.innerHTML == "Отменить выбор") {
-            elementsOfCategory.chooseAllButton.innerHTML = "Выбрать всё";
-        } else if (!statesOfCheckboxes.includes(false) && elementsOfCategory.chooseAllButton.innerHTML == "Выбрать всё") {
-            elementsOfCategory.chooseAllButton.innerHTML = "Отменить выбор";
-        }
-    }
-}
-
-function getCheckboxesAndButtonOfCategory(currentCheckbox) {
+function getCheckboxesAndCheckboxOfCategory(currentCheckbox) {
     let checkboxes = [currentCheckbox];
     let nextElem = currentCheckbox.nextElementSibling;
         while(nextElem?.tagName != "H3" && nextElem) {
@@ -167,19 +159,19 @@ function getCheckboxesAndButtonOfCategory(currentCheckbox) {
         }
 
     let previousElem = currentCheckbox.previousElementSibling;
-    let chooseAllButton;
+    let chooseAllCheckbox;
     while(previousElem.tagName != "H3") {
         if (previousElem.tagName == "INPUT") {
                 checkboxes.push(previousElem);
-        } else if (previousElem.tagName == "BUTTON") {
-            chooseAllButton = previousElem;
+        } else if (previousElem.tagName == "DIV") {
+            chooseAllCheckbox = previousElem.querySelector(".choose-all-checkbox");
         }
 
             previousElem = previousElem.previousElementSibling;
         }
     
     return {
-        chooseAllButton: chooseAllButton,
+        chooseAllCheckbox: chooseAllCheckbox,
         checkboxes: checkboxes
     };
 }

@@ -3,8 +3,7 @@ import {DISHES} from "./dishes_presets.js";
 import {INGREDIENTS} from "./ingredients_presets.js";
 import { INGREDIENTS_INFO } from "./ingredients_info_presets.js";
 
-import {removeDishTypesMenu, addSearchField, showHiddenCheckboxes, createIngredientsCategoryTitle, addNoIngredientsTitle, addIngredientsOfCategory, toggleAllFromCategory, 
-changeChooseAllButtonText} from "./ingredients_menu.js";
+import {removeDishTypesMenu, addSearchField, showHiddenCheckboxes, createIngredientsCategoryTitle, addNoIngredientsTitle, addIngredientsOfCategory, toggleAllFromCategory} from "./ingredients_menu.js";
 import {showRecipe} from "./recipe.js";
 import {changeMainHeight, toggleNavButtons, main} from "./nav_and_main_functions.js";
 
@@ -402,7 +401,6 @@ export class App {
 
         document.getElementById("back-button").onclick = () => this.showTypesMenu(true);
         document.body.addEventListener("click", toggleAllFromCategory);
-        document.body.addEventListener("click", changeChooseAllButtonText);
 
         changeMainHeight();
     }

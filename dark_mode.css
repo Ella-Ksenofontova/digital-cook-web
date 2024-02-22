@@ -3,6 +3,10 @@
     background-color: navy;
 }
 
+[data-theme="dark"] .logo {
+    background-image: url("./assets/logo_dark.png");
+}
+
 [data-theme="dark"] body {   
     background: url("./assets/food_dark.jpg");
     background-size: cover;

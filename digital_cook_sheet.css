@@ -22,6 +22,15 @@ header {
     min-height: 100px;
 }
 
+.logo {
+    width: 200px;
+    height: 150px;
+    background-image: url("./assets/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 body {
     margin: 0;
     
@@ -128,7 +137,7 @@ nav {
     position: sticky;
     z-index: 1000;
 
-    transition-property: font-size, width, height;
+    transition-property: all;
     transition-duration: 1s;
 
     margin: 5px 0;
@@ -136,6 +145,10 @@ nav {
     font-size: 0;
     background-color:#409ce3;
     text-decoration: none;
+}
+
+.nav-button span {
+    visibility: hidden;
 }
 
 .nav-button#homepage {
@@ -169,8 +182,6 @@ button, #continue, #ingredients-info, .nav-button {
 button, #continue {
     min-width: 110px;
     min-height: 20px;
-    width: 13%;
-    height: 7%;
 
     background-color:#409ce3
 }
@@ -472,11 +483,4 @@ figcaption.small {
     column-gap: 10px;
     justify-content: center;
 }
-
-/*Media Queries*/
-
-@media(prefers-reduced-motion) {
-    .nav-button, .theme-toggler, .thumb, .homepage-link {
-        transition: none;
-    }
-}
+@import url("./media.css")

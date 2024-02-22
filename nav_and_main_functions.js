@@ -4,6 +4,7 @@
 
 export function toggleNavButtons() {
     let navButtons = Array.from(nav.children).filter(item => item.tagName == "A");
+    nav.classList.toggle("hidden");
     for (let navButton of navButtons) {
         navButton.hidden = !navButton.hidden;
         if (!navButton.hidden) {
@@ -11,6 +12,7 @@ export function toggleNavButtons() {
             navButton.style.height =  navButton.id == "homepage" ? "60px" : "70px";
             navButton.style.fontSize = "45px";
             navButton.tabIndex = "0";
+            navButton.firstElementChild.style.visibility = "visible";
         } else {
             navButton.style.width = "0";
             navButton.style.height = "0"
@@ -48,5 +50,5 @@ export function changeMainHeight() {
 export let main = document.querySelector("main")
 
 
-let header = document.querySelector(".header");
+let header = document.querySelector("header");
 let nav = document.querySelector("nav");
