@@ -62,6 +62,10 @@
     background-repeat: no-repeat;
 }
 
+[data-theme="dark"] nav {
+    background-color: #0202b2;
+}
+
 /*Buttons*/
 
 [data-theme="dark"] button, 
@@ -95,7 +99,8 @@
 }
 
 [data-theme="dark"] #ingredients-info {
-    background-color:navy
+    background-color:navy;
+    background-image: url("./assets/info_dark.png");
 }
 
 /*Recipe and ingredients exclusion pop-ups*/

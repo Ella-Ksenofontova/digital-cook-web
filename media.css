@@ -41,20 +41,17 @@
         font-size: 1.25rem;
     }
 
+    .wrapper {
+        position: relative;
+        justify-self: start;
+    }
+
     nav {
-        padding: 10px 30px;
-        background-color: #337eb8;
+        right: 0;
+        left: 0;
+        transition: none;
     }
 
-    
-    [data-theme="dark"] nav {
-        background-color: #0202b2;
-    }
-
-    nav.hidden {
-        padding: 0;
-        width: 0;
-    }
 
     .search-field {
         height: 25px;

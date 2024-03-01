@@ -34,6 +34,16 @@ export class App {
         let menu = document.querySelector(".menu-button");
         
         menu.onclick = toggleNavButtons;
+
+        window.addEventListener("click", function(event) {
+            if (event.target.tagName != "NAV" && !event.target.classList.contains("menu-button") && !document.querySelector("nav").classList.contains("hidden")) {
+                if (window.matchMedia("min-width: 500px").matches) {
+                    setTimeout(() => toggleNavButtons(), 500);
+                } else {
+                    toggleNavButtons();
+                }
+            }
+        })
         
         window.addEventListener("resize", changeMainHeight);
         document.addEventListener("DOMContentLoaded", changeMainHeight);
@@ -257,8 +267,8 @@ export class App {
                 let noIngredientsTitle = document.querySelector(".no-ingredients-title");
                 noIngredientsTitle.remove();
             } else {
-                let chooseAllButton = document.querySelector(".choose-all-button");
-                chooseAllButton.remove();
+                let chooseAllDiv = document.querySelector(".choose-all-div");
+                chooseAllDiv.remove();
             }     
         }
 
@@ -384,12 +394,12 @@ export class App {
         let backButton = document.getElementById("back-button");
         this.appropriateIngredients = this.getAppropriateIngredients();
 
+        if(!fromExcludeMenu) addSearchField();
+
         let numberOfIngredientsWithInfo = this.getIngredientsWithInfo().ingredientsNames.length;    
         if (numberOfIngredientsWithInfo) {   
             this.addLinkToIngredientsInfo();
         }
-
-        if(!fromExcludeMenu) addSearchField();
 
         let ingredientsContainer = document.createElement("div");
         ingredientsContainer.className = "ingredients-container";
@@ -490,40 +500,13 @@ export class App {
 
     addLinkToIngredientsInfo() {
         let linkToIngredientInfo = document.createElement("a");
-        
-        let infoImg = document.createElement("img");
-        infoImg.src = localStorage.getItem("theme") == "light" ? "./assets/info.png" : "./assets/info_dark.png";
-        infoImg.height = "50";
-        infoImg.width = "50";
-        infoImg.title = "Справка по ингредиентам";
-
-        linkToIngredientInfo.append(infoImg);
-
         linkToIngredientInfo.id = "ingredients-info";
         linkToIngredientInfo.href = "./ingredients_info.html"
 
         main.append(linkToIngredientInfo);
-        this.changeLinkPosition();
         window.onscroll = this.changeLinkPosition;
-        window.addEventListener("resize", this.changeLinkPosition);
 
         linkToIngredientInfo.onclick = linkToIngredientInfo.oncontextmenu = () => this.setLocalStorage.call(this);
-    }
-
-    /**
-     * Changes position of link to page with info about some ingredients when document is scrolled.
-     */
-
-    changeLinkPosition() {
-        let linkToIngredientInfo = document.getElementById("ingredients-info");
-
-        let runtimeTitle = document.getElementById("runtime-title");
-
-        if (runtimeTitle.getBoundingClientRect().bottom > 0){
-            linkToIngredientInfo.style.top = runtimeTitle.getBoundingClientRect().bottom + 20 + "px";
-        } else {
-            linkToIngredientInfo.style.top = "20px";
-        }
     }
 
     /**

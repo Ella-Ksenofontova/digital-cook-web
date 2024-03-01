@@ -10,22 +10,24 @@
     </head>
     <body>
         <header>
-            <button class="menu-button"></button>
+            <div class="wrapper">
+                <button class="menu-button"></button>
+                <nav class="hidden">
+                    <a class="nav-button" hidden title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
+                        <span aria-hidden="true">©</span>
+                        <span class="visually-hidden">Ссылки на авторов стороннего контента</span>
+                    </a><br>
+                    <a class="nav-button" hidden title="На главную" href="./index.html" tabindex="-1" id="homepage">
+                        <span class="visually-hidden">Вернуться на главную</span>
+                    </a>
+                </nav>
+            </div>
             <div class="logo"></div>
             <div class="theme-toggler">
                 <span class="visually-hidden">Сменить тему приложения</span>
                 <div class="thumb"></div>
             </div>
         </header>
-        <nav class="hidden">
-            <a class="nav-button" hidden title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
-                <span aria-hidden="true">©</span>
-                <span class="visually-hidden">Ссылки на авторов стороннего контента</span>
-            </a><br>
-            <a class="nav-button" hidden title="На главную" href="./index.html" tabindex="-1" id="homepage">
-                <span class="visually-hidden">Вернуться на главную</span>
-            </a>
-        </nav>
         <main class="secondary-page">
            <h1 class="secondary-page">О приложении</h1> 
            Это веб-приложение позволяет Вам подобрать блюда на основе ваших предпочтений - любимых кухонь и ингредиентов, а также предпочитаемых категорий блюд.<br>
