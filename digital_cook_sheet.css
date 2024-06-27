@@ -90,8 +90,6 @@ button {
 
     border-radius: 15px;
     background-color: white;
-
-    transition: all .5s ease;
 }
 
 .thumb {
@@ -99,6 +97,7 @@ button {
     width: 26px;
 
     position: relative;
+    left: 0;
 
     border-radius: 15px;
     border: 2px solid #b0e0e6;
