@@ -17,11 +17,12 @@ function applyTheme(theme) {
 
 document.addEventListener("DOMContentLoaded", () => {
     applyTheme(getPreferedTheme());
-    document.querySelector(".thumb").addEventListener("click", () => {
+    document.querySelector(".theme-toggler").addEventListener("click", () => {
         if (getPreferedTheme() == "light") {
             applyTheme("dark");
         } else {
             applyTheme("light");
         }
-    })
+    });
+
 });

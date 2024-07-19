@@ -43,13 +43,15 @@ export function findMatchingIngredients(event) {
     let ingredientCheckboxes = document.querySelectorAll("[id^=ingredient-checkbox]");
 
     for(let checkbox of ingredientCheckboxes) {
-        let textNearCheckbox = checkbox.nextSibling.innerHTML;
+        let textNearCheckbox = checkbox.nextElementSibling.nextElementSibling.innerHTML;
         if (!textNearCheckbox.toLowerCase().startsWith(query)) {
             checkbox.hidden = true;
-            checkbox.nextSibling.hidden = true;
+            checkbox.nextSibling.classList.add("hidden");
+            checkbox.nextElementSibling.nextElementSibling.hidden = true;
         } else if (checkbox.hidden) {
             checkbox.hidden = false;
-            checkbox.nextSibling.hidden = false;
+            checkbox.nextSibling.classList.remove("hidden");
+            checkbox.nextElementSibling.nextElementSibling.hidden = false;
         }
     }
 

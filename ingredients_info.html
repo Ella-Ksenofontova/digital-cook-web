@@ -13,18 +13,19 @@
             <div class="wrapper">
                 <button class="menu-button"></button>
                 <nav class="hidden">
-                    <a class="nav-link hidden" title="О приложении" href="./info_about_app.html" tabindex="-1">
-                        <span aria-hidden="true">ℹ</span>
-                        <span class="visually-hidden">Информация о приложении</span>
+                    <span aria-hidden="true">ℹ</span>
+                    <a class="nav-link hidden" href="./info_about_app.html" tabindex="-1">
+                        Информация о приложении
                     </a><br>
+                    <span aria-hidden="true">©</span>
                     <a class="nav-link hidden"
-                    title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
-                        <span aria-hidden="true">©</span>
-                        <span class="visually-hidden">Ссылки на авторов стороннего контента</span>
+                     href="./copyright.html" tabindex="-1">
+                        Ссылки на авторов стороннего контента
                     </a>
                     <br>
-                    <a class="nav-link hidden" title="На главную" href="./index.html" tabindex="-1" id="homepage">
-                        <span class="visually-hidden">Вернуться на главную</span>
+                    <span id="homepage" aria-hidden="true"></span>
+                    <a class="nav-link hidden" href="./index.html" tabindex="-1">
+                        Вернуться на главную
                     </a>
                 </nav>
             </div>
@@ -39,10 +40,10 @@
         </main>
         <script type="module" src="ingredients_info.js"></script>
         <script type="module">
-            import {changeMainHeight, toggleNavButtons} from "./nav_and_main_functions.js";
+            import {changeMainHeight, toggleNav} from "./nav_and_main_functions.js";
 
             let menu = document.querySelector(".menu-button");
-            menu.addEventListener("click", toggleNavButtons);
+            menu.addEventListener("click", toggleNav);
 
             window.addEventListener("resize", changeMainHeight);
 

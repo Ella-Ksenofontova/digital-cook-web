@@ -20,12 +20,13 @@
         </div>
     </header>
     <nav class="hidden">
-        <a class="nav-link hidden" title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
-            <span aria-hidden="true">©</span>
+        <span aria-hidden="true">©</span>
+        <a class="nav-link hidden" href="./copyright.html" tabindex="-1">
             Ссылки на авторов стороннего контента
         </a><br>
-        <a class="nav-link hidden" title="На главную" href="./index.html" tabindex="-1" id="homepage">
-            <span class="visually-hidden">Вернуться на главную</span>
+        <span aria-hidden="true" id="homepage"></span>
+        <a class="nav-link hidden" href="./index.html" tabindex="-1">
+            Вернуться на главную
         </a>
     </nav>
     <main class="secondary-page">
@@ -37,10 +38,10 @@
             href="mailto:ellaksenofontova@gmail.com?subject=О &#8220;Цифровом поваре&#8220;">на мой email</a>.
     </main>
     <script type="module">
-        import { changeMainHeight, toggleNavButtons } from "./nav_and_main_functions.js";
+        import { changeMainHeight, toggleNav } from "./nav_and_main_functions.js";
 
         let menu = document.querySelector(".menu-button");
-        menu.addEventListener("click", toggleNavButtons);
+        menu.addEventListener("click", toggleNav);
 
         window.addEventListener("resize", changeMainHeight);
 

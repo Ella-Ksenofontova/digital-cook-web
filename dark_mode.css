@@ -1,6 +1,6 @@
 /*General*/
 [data-theme="dark"] header {
-    background-color: navy;
+    background-color: black;
 }
 
 [data-theme="dark"] .logo {
@@ -16,7 +16,7 @@
 }
 
 [data-theme="dark"] main {
-    background-color: #3F48CC;
+    background-color: #303032;
 }
 
 [data-theme="dark"] a,
@@ -26,17 +26,23 @@
     color: aliceblue;
 }
 
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3 {
+    color: white;
+}
+
 /*Theme Toggler*/
 
 [data-theme="dark"] .theme-toggler {
-    background-color: #3F48CC;
+    background-color: #767373;
 }
 
 [data-theme="dark"] .thumb {
     left: 44px;
 
     background-image: url("./assets/night-mode.png");
-    border: 2px solid #3F48CC;
+    border: 2px solid #767373;
 }
 
 /*Navigation*/
@@ -51,19 +57,8 @@
     border: 0;
 }
 
-[data-theme="dark"] .nav-button {
-    background-color:navy;
-    border: 0;
-}
-
-[data-theme="dark"] .nav-button#homepage {
-    background-image: url("./assets/homepage_dark.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 [data-theme="dark"] nav {
-    background-color: #0202b2;
+    background-color: black;
 }
 
 /*Buttons*/
@@ -74,7 +69,7 @@
 [data-theme="dark"] .nav-button {
     color: white;
     
-    border: 1px solid #271790;
+    border: 1px solid #767373;
     border-radius: 10px;
     
     font-weight: bold;
@@ -83,7 +78,7 @@
 
 [data-theme="dark"] button, 
 [data-theme="dark"] #continue {
-    background-color:navy
+    background-color:#767373
 }
 
 [data-theme="dark"] button:hover, 
@@ -94,21 +89,27 @@
 [data-theme="dark"] #ingredients-info:active,
 [data-theme="dark"] .nav-button:hover,
 [data-theme="dark"] .nav-button:active {
-    background-color:rgb(2, 2, 94);
-    border: 1px solid rgb(2, 2, 58)
+    background-color:#7d7a7a;
+    border: 1px solid #767373;
 }
 
 [data-theme="dark"] #ingredients-info {
-    background-color:navy;
+    background-color:black;
     background-image: url("./assets/info_dark.png");
+}
+
+/*Ingredients info*/
+
+[data-theme="dark"] dt {
+    color: white;
 }
 
 /*Recipe and ingredients exclusion pop-ups*/
 
 [data-theme="dark"] .recipe-pop-up, 
 [data-theme="dark"] .exclude-ingredients-pop-up {
-    background-color: rgb(58, 6, 201);
-    border: 1px solid navy;
+    background-color: #a19e9e;
+    border: 1px solid #4c4a4a;
 }
 
 [data-theme="dark"] .close-button,
@@ -127,4 +128,13 @@
     background-size: cover;
    
     border: 0;
+}
+
+[data-theme="dark"] .recipe-title, 
+[data-theme="dark"] .exclude-ingredients-title {
+    color: white;
+}
+
+[data-theme="dark"] .frame-for-pop-up {
+    background-color: black;
 }

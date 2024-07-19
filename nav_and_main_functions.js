@@ -9,7 +9,6 @@ export function toggleNav() {
     let heightOfNav = 0;
 
     for (let child of navLinks) {
-        console.log(child);
         if (child.classList.contains("nav-link") && !nav.classList.contains("hidden")) {
             child.tabIndex = "0";
             heightOfNav += child.offsetHeight + parseInt(getComputedStyle(child).marginBlock);
@@ -39,27 +38,17 @@ export function changeNavHeight() {
  */
 
 export function changeMainHeight() {
-    let mainHeight = parseInt(getComputedStyle(main).padding) * 2;
-    let mainChildren = main.children;
-
-    for (let child of mainChildren) {
-        mainHeight += Math.max(child.scrollHeight, child.offsetHeight);
-    }
-
     let headerHeight = header.offsetHeight;
 
-    if (mainHeight > innerHeight - headerHeight) {
-        main.style.height = mainHeight + 20 + "px";
-    } else {
-        main.style.height = innerHeight - headerHeight + "px"
-    }
+    let mainHeight = Math.max(document.body.scrollHeight, innerHeight) - headerHeight;
+    main.style.height = `${mainHeight}px`;
 }
 
 /**
  * Link to object that represents _main_ tag of the document.
  */
 
-export const main = document.querySelector("main")
+export const main = document.querySelector("main");
 
 
 const header = document.querySelector("header");
