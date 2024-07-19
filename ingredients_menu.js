@@ -4,12 +4,14 @@
 export function removeDishTypesMenu() {
     let runtimeForm = document.getElementById("runtime-form");
 	let dishTypesCheckboxes = runtimeForm.querySelectorAll("[id^=dish-type-checkbox]");
+    let pseudoCheckboxes = runtimeForm.querySelectorAll(".pseudo-checkbox");
     let dishTypeBreaks = runtimeForm.querySelectorAll("[id^=dish-type-br]");
 
     for (let i = 0; i < dishTypesCheckboxes.length; i++) {
-		let textNearCheckbox = dishTypesCheckboxes[i].nextSibling;
+		let textNearCheckbox = pseudoCheckboxes[i].nextElementSibling;
         
         textNearCheckbox.remove();
+        pseudoCheckboxes[i].remove();
         dishTypesCheckboxes[i].remove();
         dishTypeBreaks[i].remove();
     }
@@ -100,8 +102,13 @@ export function createIngredientsCategoryTitle(ingredientsCategories, ingredient
         let chooseAllCheckbox = document.createElement("input");
         chooseAllCheckbox.type = "checkbox";
         chooseAllCheckbox.className = "choose-all-checkbox";
-        chooseAllCheckbox.id = `choose-all-checkbox${ingredientCategoryNumber}`
+        chooseAllCheckbox.id = `choose-all-checkbox${ingredientCategoryNumber}`;
+
+        let chooseAllPseudoCheckbox = document.createElement("div");
+        chooseAllPseudoCheckbox.className = "pseudo-checkbox";
+
         chooseAllDiv.append(chooseAllCheckbox);
+        chooseAllDiv.append(chooseAllPseudoCheckbox);
 
         let chooseAllLabel = document.createElement("label");
         chooseAllLabel.htmlFor = `choose-all-checkbox${ingredientCategoryNumber}`;
@@ -121,7 +128,8 @@ export function showHiddenCheckboxes() {
     for (let checkbox of checkboxes) {
         if (checkbox.hidden) {
             checkbox.hidden = false;
-            checkbox.nextElementSibling.hidden = false;
+            checkbox.nextElementSibling.classList.remove("hidden");
+            checkbox.nextElementSibling.nextElementSibling.hidden = false;
          }
     }
 }
@@ -132,14 +140,15 @@ export function showHiddenCheckboxes() {
  */
 
 export function toggleAllFromCategory(event) {
-    if (event.target.className == "choose-all-checkbox") {
-        let chooseAllButton = event.target
-        let nextElem = chooseAllButton.parentNode.nextElementSibling;
+    if (event.target.parentElement.className === "choose-all-div") {
+        let chooseAllElem = event.target;
+        let chooseAllCheckbox = event.target.parentElement.querySelector(".choose-all-checkbox");
+        let nextElem = chooseAllElem.parentNode.nextElementSibling;
 
         while(nextElem?.tagName != "H3" && nextElem) {
-            if (nextElem.tagName == "INPUT" && chooseAllButton.checked) {
+            if (nextElem.tagName == "INPUT" && chooseAllCheckbox.checked) {
                 nextElem.checked = true;
-            } else if (nextElem.tagName == "INPUT" && !chooseAllButton.checked) {
+            } else if (nextElem.tagName == "INPUT" && !chooseAllCheckbox.checked) {
                 nextElem.checked = false;
             }
             nextElem = nextElem.nextElementSibling;
@@ -200,8 +209,13 @@ export function addIngredientsOfCategory(ingredientsOfCategory) {
         let ingredientCheckbox = document.createElement("input");
         ingredientCheckbox.type = "checkbox";
         ingredientCheckbox.className = "ingredient-checkbox";
-        ingredientCheckbox.id = "ingredient-checkbox: " + ingredientsOfCategory[ingredientNumber];;
+        ingredientCheckbox.id = "ingredient-checkbox: " + ingredientsOfCategory[ingredientNumber];
+
+        let ingredientPseudoCheckbox = document.createElement("div");
+        ingredientPseudoCheckbox.className = "pseudo-checkbox";
+
         ingredientsContainer.append(ingredientCheckbox);
+        ingredientsContainer.append(ingredientPseudoCheckbox);
 
         let ingredientName = document.createElement("label");
         ingredientName.className = "ingredient-name";

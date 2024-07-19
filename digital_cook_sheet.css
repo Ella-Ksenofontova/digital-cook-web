@@ -1,5 +1,6 @@
 @import url("./dark_mode.css");
 @import url("./media.css");
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /*General*/
 header {
@@ -39,7 +40,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
 
-    font-family: "Segoe UI", Verdana;
+    font-family: "Mulish", "Segoe UI", Verdana, sans-serif;
     font-size: 1rem;
 }
 
@@ -56,7 +57,7 @@ main {
     padding: 20px;
 
     text-align: center;
-    background-color: #6fb0e1;
+    background-color: #d7ebfa;
     background-clip: padding-box;
 }
 
@@ -132,41 +133,45 @@ nav {
     left: 3%;
     z-index: 1000;
 
-    width: 50px;
+    width: auto;
     padding: 10px 30px;
     background-color: #337eb8;
+    border-radius: 10px;
+    text-align: left;
+    visibility: visible;
 
     transition: all 1s ease;
 }
 
 nav.hidden {
-    padding: 0;
-    width: 0;
-}
-
-.nav-button {
-    display: inline-block;
-    width: 0;
+    padding-block: 0;
+    min-height: 0;
     height: 0;
-
-    position: sticky;
-    z-index: 1000;
-
-    transition-property: all;
-    transition-duration: 1s;
-
-    margin: 5px 0;
-
-    font-size: 0;
-    background-color:#409ce3;
-    text-decoration: none;
+    transition-delay: .1s;
 }
 
-.nav-button span {
+nav.hidden .nav-link, nav.hidden span {
     visibility: hidden;
+    transition-delay: 0ms;
+    opacity: 0;
 }
 
-.nav-button#homepage {
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav-link, nav span {
+    visibility: visible;
+    color: white;
+    opacity: 1;
+    transition: all .5s ease .5s;
+}
+
+.nav-link#homepage {
+    width: 70px;
+
     background-image: url("./assets/homepage.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -184,19 +189,21 @@ nav.hidden {
 
 /*Buttons*/
 
-button, #continue, #ingredients-info, .nav-button {
+button, #continue, #ingredients-info {
     color: white;
     
     border: 1px solid #3782bc;
     border-radius: 10px;
+    font-weight: 500;
+    font-family: "Mulish", "Segoe UI", Verdana, sans-serif;
     
-    font-weight: bold;
     text-align: center;
 }
 
 button, #continue {
-    min-width: 110px;
+    min-width: max-content;
     min-height: 20px;
+    padding-inline: 5px;
 
     background-color:#409ce3
 }
@@ -214,9 +221,7 @@ button:active,
 #continue:hover,
 #continue:active,
 #ingredients-info:hover,
-#ingredients-info:active,
-.nav-button:hover,
-.nav-button:active {
+#ingredients-info:active {
     background-color:#357aaf;
     border: 1px solid #2f6e9e
 }
@@ -272,7 +277,7 @@ h1, h2, h3 {
     margin: 10px auto;
     width: 75%;
 
-    color: white;
+    color: #409ce3;
     text-align: left;
 }
 
@@ -296,6 +301,29 @@ form {
 
     line-height: 1.5;
     text-align: left;
+}
+
+input[type="checkbox"] {
+    visibility: hidden;
+}
+
+.pseudo-checkbox {
+    display: inline-block;
+    justify-self: end;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+
+    background-image: url("assets/checkbox_unchecked.png");
+    background-size: contain;
+}
+
+input[type="checkbox"]:checked + .pseudo-checkbox {
+    background-image: url("assets/checkbox_checked.png");
+}
+
+.pseudo-checkbox.hidden {
+    display: none;
 }
 
 /*Ingredients info*/
@@ -363,9 +391,8 @@ figcaption.small {
     left: 0;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 25px auto auto;
+    grid-template-columns: 0 25px auto auto;
     justify-content: start;
-    column-gap: 15px;
     align-items: center;
 
     box-sizing: content-box;
@@ -376,7 +403,10 @@ figcaption.small {
 }
 
 .ingredient-category-title,
-.no-ingredients-title,
+.no-ingredients-title {
+    grid-column-start: span 3;
+}
+
 .ingredient-name {
     grid-column-start: span 2;
 }
@@ -388,6 +418,10 @@ figcaption.small {
 .ingredient-checkbox {
     height: 13px;
     width: 13px;
+}
+
+.ingredient-checkbox:hidden {
+    display: none;
 }
 
 /*Dishes menu*/
@@ -404,6 +438,10 @@ figcaption.small {
     width: 75%;
 }
 
+
+.dishes-container #back-button {
+    margin: 0;
+}
 
 .dish-item {
     display: list-item;
@@ -431,8 +469,8 @@ figcaption.small {
 
     padding: 20px;
 
-    background-color: #53a0dc;
-    border-radius: 10px;
+    background-color: #d7ebfa;
+    border-radius: 30px;
 }
 
 .recipe-pop-up {
@@ -452,7 +490,7 @@ figcaption.small {
 .recipe-title, .exclude-ingredients-title {
     margin: 0;
 
-    color: white;
+    color: #409ce3;
     font-weight: bold;
 }
 
@@ -501,7 +539,7 @@ figcaption.small {
     width: 350px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 120px 120px;
+    grid-template-columns: auto auto;
     column-gap: 10px;
     justify-content: center;
 }

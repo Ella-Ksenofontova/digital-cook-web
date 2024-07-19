@@ -2,24 +2,36 @@
  * Changes visibility of navigation buttons (to be precise, they're customized links).
  */
 
-export function toggleNavButtons() {
-    let navButtons = Array.from(nav.children).filter(item => item.tagName == "A");
+export function toggleNav() {
+    let navLinks = nav.querySelectorAll(".nav-link");
     nav.classList.toggle("hidden");
-    for (let navButton of navButtons) {
-        navButton.hidden = !navButton.hidden;
-        if (!navButton.hidden) {
-            navButton.style.width = "50px";
-            navButton.style.height =  navButton.id == "homepage" ? "60px" : "70px";
-            navButton.style.fontSize = "45px";
-            navButton.tabIndex = "0";
-            navButton.firstElementChild.style.visibility = "visible";
-        } else {
-            navButton.style.width = "0";
-            navButton.style.height = "0"
-            navButton.style.fontSize = "0";
-            navButton.tabIndex = "-1";
+
+    let heightOfNav = 0;
+
+    for (let child of navLinks) {
+        console.log(child);
+        if (child.classList.contains("nav-link") && !nav.classList.contains("hidden")) {
+            child.tabIndex = "0";
+            heightOfNav += child.offsetHeight + parseInt(getComputedStyle(child).marginBlock);
+        } else if (child.classList.contains("nav-link")) {
+            child.tabIndex = "-1";
         }
     }
+
+    nav.style.height = `${heightOfNav}px`;
+}
+
+export function changeNavHeight() {
+    let navLinks = nav.querySelectorAll(".nav-link");
+    let heightOfNav = 0;
+
+    for (let child of navLinks) {
+        if (child.classList.contains("nav-link") && !nav.classList.contains("hidden")) {
+            heightOfNav += child.offsetHeight + parseInt(getComputedStyle(child).marginBlock);
+        } 
+    }
+
+    nav.style.height = `${heightOfNav}px`;
 }
 
 /**
@@ -47,8 +59,8 @@ export function changeMainHeight() {
  * Link to object that represents _main_ tag of the document.
  */
 
-export let main = document.querySelector("main")
+export const main = document.querySelector("main")
 
 
-let header = document.querySelector("header");
-let nav = document.querySelector("nav");
+const header = document.querySelector("header");
+const nav = document.querySelector("nav");

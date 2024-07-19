@@ -37,10 +37,6 @@
         width: 100px;
     }
 
-    body, button, .nav-button, #continue, input::placeholder {
-        font-size: 1.25rem;
-    }
-
     .wrapper {
         position: relative;
         justify-self: start;
@@ -49,7 +45,6 @@
     nav {
         right: 0;
         left: 0;
-        transition: none;
     }
 
 
@@ -71,11 +66,7 @@
     #continue {
         margin-top: 5px;
     }
-
-    .logo {
-        height: 200px;
-    }
-
+    
     h1, h2, h3 {
         margin-inline: 0;
         margin-block: 10px;

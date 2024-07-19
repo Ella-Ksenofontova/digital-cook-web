@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Цифровой повар</title>
-        <link rel="stylesheet" href="./digital_cook_sheet.css">
-        <link rel="stylesheet" href="./media.css">
-        <link type="Image/x-icon" href="./assets/favicon.png" rel="icon">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <header>
-            <div class="wrapper">
-                <button class="menu-button"></button>
-                <nav class="hidden">
-                    <a class="nav-button" hidden title="О приложении" href="./info_about_app.html" tabindex="-1">
-                       <span aria-hidden="true"> ℹ</span>
-                       <span class="visually-hidden">Информация о приложении</span>
-                    </a><br>
-                    <a class="nav-button" hidden title="Ссылки на авторов стороннего контента" href="./copyright.html" tabindex="-1">
-                        <span aria-hidden="true">©</span>
-                        <span class="visually-hidden">Ссылки на авторов стороннего контента</span>
-                    </a>
-                </nav>
-            </div>
-            <div class="logo"></div>
-            <div class="theme-toggler">
-                <span class="visually-hidden">Сменить тему приложения</span>
-                <div class="thumb"></div>
-            </div>
-        </header>
-        <main>
-            <button id="start">Начать</button>
-        </main>
-        <script src="digital_cook_script.js" type="module">
-        </script>
-        <script type="module">
-            import {App} from "./digital_cook_script.js";
-            let app = new App;
-            app.start();
-        </script>
-        <script src="./theme_toggle.js"></script>
-    </body>
+
+<head>
+    <title>Цифровой повар</title>
+    <link rel="stylesheet" href="./digital_cook_sheet.css">
+    <link rel="stylesheet" href="./media.css">
+    <link type="Image/x-icon" href="./assets/favicon.png" rel="icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <button class="menu-button"></button>
+        <div class="logo"></div>
+        <div class="theme-toggler">
+            <span class="visually-hidden">Сменить тему приложения</span>
+            <div class="thumb"></div>
+        </div>
+    </header>
+    <nav class="hidden">
+        <ul>
+            <li>
+                <span aria-hidden="true"> ℹ</span>
+                <a class="nav-link" href="./info_about_app.html" tabindex="-1">
+                    О приложении
+
+                </a>
+            </li>
+            <li>
+                <span aria-hidden="true">©</span>
+                <a class="nav-link" href="./copyright.html" tabindex="-1">
+                    Ссылки на авторов стороннего контента
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <button id="start">Начать</button>
+    </main>
+    <script src="digital_cook_script.js" type="module">
+    </script>
+    <script type="module">
+        import { App } from "./digital_cook_script.js";
+        let app = new App;
+        app.start();
+    </script>
+    <script src="./theme_toggle.js"></script>
+</body>
+
 </html>

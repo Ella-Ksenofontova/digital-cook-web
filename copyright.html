@@ -16,17 +16,6 @@
     </head>
     <body>
         <header>
-            <div class="wrapper">
-                <nav class="hidden">
-                    <a class="nav-button" hidden title="О приложении" href="./info_about_app.html" tabindex="-1">
-                        <span aria-hidden="true">ℹ</span>
-                        <span class="visually-hidden">Информация о приложении</span>
-                    </a><br>
-                    <a class="nav-button" hidden title="На главную" href="./index.html" tabindex="-1" id="homepage">
-                        <span class="visually-hidden">Вернуться на главную</span>
-                    </a>
-                </nav>
-            </div>
             <button class="menu-button"></button>
             <div class="logo"></div>
             <div class="theme-toggler">
@@ -34,6 +23,16 @@
                 <div class="thumb"></div>
             </div>
         </header>
+        <nav class="hidden">
+            <span aria-hidden="true">ℹ</span>
+            <a class="nav-link hidden"href="./info_about_app.html" tabindex="-1">
+                Информация о приложении
+            </a><br>
+            <span id="homepage" aria-hidden="true"></span>
+            <a class="nav-link hidden"  href="./index.html" tabindex="-1">
+                Вернуться на главную
+            </a>
+        </nav>
         <main class="secondary-page">
            <h1 class="secondary-page">Ссылки на авторов стороннего контента</h1> 
             Многие картинки (иконки, такие как иконка меню, фотография еды, которую я использую в качестве фона) взяты с других сайтов, поэтому здесь я указываю их авторов.
@@ -44,6 +43,8 @@
                 <li><a href="https://www.flaticon.com/authors/icon-wind">Автор иконки "меню"</a></li>
                 <li><a href="https://icon54.com/">Ссылка на автора иконки "закрыть" (используется при показе рецептов)</a></li>
                 <li><a href="https://www.flaticon.com/authors/freepik">Автор иконок солнца и луны на переключателе тем</a></li>
+                <li><a href="https://www.flaticon.com/authors/freepik">Автор иконки "на главную"</a></li>
+                <li><a href="https://www.flaticon.com/authors/maxim-basinski-premium ">Автор иконки "галочка"</a></li>
             </ol>
 
             <h1>Ссылки на сайты, с которых я взяла рецепты</h1>
@@ -55,12 +56,12 @@
             </ol>
         </main>
         <script type="module">
-            import {changeMainHeight, toggleNavButtons} from "./nav_and_main_functions.js";
+            import {toggleNav, changeMainHeight} from "./nav_and_main_functions.js";
             
             let menu = document.querySelector(".menu-button");
-            menu.addEventListener("click", toggleNavButtons);
+            menu.addEventListener("click", toggleNav);
 
-            window.addEventListener("resize",changeMainHeight);
+            window.addEventListener("resize", changeMainHeight);
 
             document.addEventListener("DOMContentLoaded", changeMainHeight);
 

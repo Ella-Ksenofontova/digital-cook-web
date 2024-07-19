@@ -5,7 +5,15 @@ import { INGREDIENTS_INFO } from "./ingredients_info_presets.js";
 
 import {removeDishTypesMenu, addSearchField, showHiddenCheckboxes, createIngredientsCategoryTitle, addNoIngredientsTitle, addIngredientsOfCategory, toggleAllFromCategory} from "./ingredients_menu.js";
 import {showRecipe} from "./recipe.js";
-import {changeMainHeight, toggleNavButtons, main} from "./nav_and_main_functions.js";
+import {changeMainHeight, toggleNav, changeNavHeight, main} from "./nav_and_main_functions.js";
+
+function toggleCheckbox(event) {
+    const target = event.target;
+    if(target.classList.contains("pseudo-checkbox")) {
+        const checkbox = target.previousElementSibling;
+        checkbox.checked = !checkbox.checked;
+    }
+}
 
 /**
  *Class that represents Digital Cook app. It contains neccessary methods and fields for the main part of application to work.
@@ -33,20 +41,23 @@ export class App {
         let startButton = document.getElementById("start");
         let menu = document.querySelector(".menu-button");
         
-        menu.onclick = toggleNavButtons;
+        menu.onclick = toggleNav;
 
         window.addEventListener("click", function(event) {
             if (event.target.tagName != "NAV" && !event.target.classList.contains("menu-button") && !document.querySelector("nav").classList.contains("hidden")) {
                 if (window.matchMedia("min-width: 500px").matches) {
-                    setTimeout(() => toggleNavButtons(), 500);
+                    setTimeout(() => toggleNav(), 500);
                 } else {
-                    toggleNavButtons();
+                    toggleNav();
                 }
             }
-        })
+        });
+
+        window.addEventListener("resize", changeNavHeight);
         
         window.addEventListener("resize", changeMainHeight);
         document.addEventListener("DOMContentLoaded", changeMainHeight);
+        document.body.addEventListener("click", toggleCheckbox);
 
         startButton.onclick = () => this.showCuisinesMenu(false);
     }
@@ -118,10 +129,12 @@ export class App {
         let runtimeForm = document.getElementById("runtime-form");
         let dishTypesCheckboxes = runtimeForm.querySelectorAll("[id^=dish-type-checkbox]");
         let dishTypesBreaks = runtimeForm.querySelectorAll("[id^=dish-type-br]");
+        let pseudoCheckboxes = runtimeForm.querySelectorAll(".pseudo-checkbox");
 
         for (let i = 0; i < dishTypesCheckboxes.length; i++) {
-            let textNearCheckbox = dishTypesCheckboxes[i].nextSibling;
+            let textNearCheckbox = pseudoCheckboxes[i].nextElementSibling;
             textNearCheckbox.remove();
+            pseudoCheckboxes[i].remove();
             dishTypesCheckboxes[i].remove();
             dishTypesBreaks[i].remove();
         }
@@ -142,7 +155,11 @@ export class App {
             cuisineCheckbox.type = "checkbox";
             cuisineCheckbox.id = "cuisine-checkbox" + cuisineNumber;
 
+            let cuisinePseudoCheckbox = document.createElement("div");
+            cuisinePseudoCheckbox.className = "pseudo-checkbox";
+
             continueButton.before(cuisineCheckbox);
+            continueButton.before(cuisinePseudoCheckbox);
 
             let cuisineLabel = document.createElement("label");
             cuisineLabel.innerHTML = cuisines[cuisineNumber - 1]
@@ -168,7 +185,7 @@ export class App {
 
         for (let cuisineCheckbox of cuisinesCheckboxes) {
             if (cuisineCheckbox.checked) {
-                let cuisine = cuisineCheckbox.nextSibling.innerHTML;
+                let cuisine = cuisineCheckbox.nextElementSibling.nextElementSibling.innerHTML;
                 chosenCuisines.push(cuisine);
             }
         }
@@ -216,7 +233,11 @@ export class App {
             dishTypeCheckbox.type = "checkbox";
             dishTypeCheckbox.id = "dish-type-checkbox" + dishTypeNumber;
 
+            let typePseudoCheckbox = document.createElement("div");
+            typePseudoCheckbox.className = "pseudo-checkbox";
+
             backButton.before(dishTypeCheckbox);
+            backButton.before(typePseudoCheckbox);
 
             let dishTypeLabel = document.createElement("label");
             dishTypeLabel.htmlFor = `${dishTypeCheckbox.id}`;
@@ -237,11 +258,13 @@ export class App {
 
     cleanUpForTypesMenu(runtimeForm) {
         let cuisinesCheckboxes = runtimeForm.querySelectorAll("[id^=cuisine-checkbox]");
-        let cuisinesBreaks = runtimeForm.querySelectorAll("[id^=cuisine-br]")
+        let cuisinesBreaks = runtimeForm.querySelectorAll("[id^=cuisine-br]");
+        let pseudoCheckboxes = runtimeForm.querySelectorAll(".pseudo-checkbox");
 
         for (let i = 0; i < cuisinesCheckboxes.length; i++) {
-            let textNearCheckbox = cuisinesCheckboxes[i].nextSibling;
+            let textNearCheckbox = pseudoCheckboxes[i].nextElementSibling;
             textNearCheckbox.remove();
+            pseudoCheckboxes[i].remove();
             cuisinesCheckboxes[i].remove();
             cuisinesBreaks[i].remove();
         }
@@ -273,10 +296,12 @@ export class App {
         }
 
         let checkboxes = document.querySelectorAll("[id^=ingredient-checkbox]");
-            for (let checkbox of checkboxes) {
-                let textNearCheckbox = checkbox.nextSibling;
-                checkbox.remove();
+        let pseudoCheckboxes = document.querySelectorAll(".pseudo-checkbox");
+            for (let i = 0; i < checkboxes.length; i++) {
+                let textNearCheckbox = pseudoCheckboxes[i].nextSibling;
+                checkboxes[i].remove();
                 textNearCheckbox.remove();
+                pseudoCheckboxes[i].remove();
         }
     }
 
@@ -329,7 +354,7 @@ export class App {
 
         for (let dishTypeCheckbox of dishTypesChecboxes) {
             if (dishTypeCheckbox.checked) {
-                let dishType = dishTypeCheckbox.nextSibling.innerHTML;
+                let dishType = dishTypeCheckbox.nextElementSibling.nextElementSibling.innerHTML;
                 chosenDishTypes.push(dishType);
             }
         }
@@ -574,7 +599,7 @@ export class App {
 
         for (let ingredientCheckbox of IngredientsCheckboxes) {
             if (ingredientCheckbox.checked) {
-                let ingredient = ingredientCheckbox.nextElementSibling.innerHTML;
+                let ingredient = ingredientCheckbox.nextElementSibling.nextElementSibling.innerHTML;
                 chosenIngredients.push(ingredient);
             }
         }
@@ -647,7 +672,8 @@ export class App {
             if(checkbox.checked) {
                 checkbox.checked = false;
                 checkbox.hidden = true;
-                checkbox.nextElementSibling.hidden = true;
+                checkbox.nextElementSibling.classList.add("hidden");
+                checkbox.nextElementSibling.nextElementSibling.hidden = true;
             };
         }
 
