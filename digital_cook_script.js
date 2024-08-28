@@ -30,7 +30,8 @@ export class App {
         this.makeSecondStep = this.makeSecondStep.bind(this);
         this.makeThirdStep = this.makeThirdStep.bind(this);
         this.finalize = this.finalize.bind(this);
-        this.showRecipeIfFound = this.showRecipeIfFound.bind(this)
+        this.showRecipeIfFound = this.showRecipeIfFound.bind(this);
+        this.start = this.start.bind(this);
     }
 
     /**
@@ -99,6 +100,10 @@ export class App {
 
         let startButton = document.getElementById("start");
         startButton.remove();
+        const findDishesButton = document.querySelector("#find-dishes");
+        findDishesButton.remove();
+        const dishesFinder = document.querySelector(".dishes-finder");
+        dishesFinder.remove();
 
         let runtimeTitle = document.createElement("h2");
         runtimeTitle.id = "runtime-title";
@@ -324,7 +329,6 @@ export class App {
                 dishesContainer.append(backButton);
             } else {
                 main.append(backButton);
-                backButton.style.marginLeft = "12.5%";
             }
         }
     }
@@ -426,17 +430,21 @@ export class App {
             this.addLinkToIngredientsInfo();
         }
 
-        let ingredientsContainer = document.createElement("div");
-        ingredientsContainer.className = "ingredients-container";
+        let ingredientsContainer = document.querySelector(".ingredients-container");
+
+        if(!ingredientsContainer) {
+            ingredientsContainer = document.createElement("div");
+            ingredientsContainer.className = "ingredients-container";
         
-        backButton.before(ingredientsContainer);
+            backButton.before(ingredientsContainer);
+        }
     
         if (!fromExcludeMenu) this.fillIngredientsContainer();
         this.changeFormHandler();
 
         document.getElementById("back-button").onclick = () => this.showTypesMenu(true);
         document.body.addEventListener("click", toggleAllFromCategory);
-
+        window.scrollTo(0, 0);
         changeMainHeight();
     }
 
@@ -619,7 +627,7 @@ export class App {
         let excludeIngredientsPopUp = document.createElement("div");
         excludeIngredientsPopUp.className = "exclude-ingredients-pop-up";
         excludeIngredientsPopUp.innerHTML = `<button class="close-button"></button>
-        <h1 class="exclude-ingredients-title">Хотите ли вы исключить какие-либо ингредиенты?</h1>
+        <h2 class="exclude-ingredients-title">Хотите ли вы исключить какие-либо ингредиенты?</h2>
         <div class="exclude-ingredients-panel">
         <button id="exclude-ingredients">Да</button>
         <button id="no-exclude-ingredients">Нет</button>
@@ -752,6 +760,7 @@ export class App {
 
         window.scrollTo(0, 0);
         this.addBackButton();
+        this.addBackToMainMenuButton();
         changeMainHeight();
     }
 
@@ -815,6 +824,28 @@ export class App {
     showRecipeIfFound(event) {
         let dishName = this.getDishForRecipe(event.target);
         if (dishName) showRecipe(dishName);
+    }
+
+    addBackToMainMenuButton() {
+        const backToMainMenu = document.createElement("button");
+        backToMainMenu.id = "main-menu";
+        backToMainMenu.innerHTML = "На главное меню";
+        const dishesContainer = main.querySelector(".dishes-container");
+        if (dishesContainer) {
+            dishesContainer.append(backToMainMenu);
+        } else {
+            main.insertAdjacentHTML("beforeend", "<br />")
+            main.append(backToMainMenu);
+        }
+
+        backToMainMenu.addEventListener("click", () => this.goToMainMenu());
+    }
+
+    goToMainMenu() {
+        main.innerHTML = "";
+        main.style.textAlign = "center";
+        main.insertAdjacentHTML("beforeend", "<button id=\"start\">Начать подбор</button><br /><button id=\"find-dishes\">Найти блюда</button><div class=\"dishes-finder\" hidden><input type=\"text\" name=\"search-field\" id=\"search-field\" placeholder=\"Введите название блюда\"><div class=\"search-results\"><ul></ul></div><button id=\"close-dishes-finder\">Закрыть</button></div>");
+        this.start();
     }
 }
 

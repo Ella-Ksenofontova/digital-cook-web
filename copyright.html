@@ -5,14 +5,8 @@
         <link type="Image/x-icon" href="./assets/favicon.png" rel="icon">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <style>
-            @import url("./digital_cook_sheet.css");
-
-            h1 {
-                margin-left: 0;
-            }
-        </style>
+        <link rel="stylesheet" href="./digital_cook_sheet.css">
+        <link rel="stylesheet" href="./media.css">
     </head>
     <body>
         <header>
@@ -34,7 +28,7 @@
             </a>
         </nav>
         <main class="secondary-page">
-           <h1 class="secondary-page">Ссылки на авторов стороннего контента</h1> 
+           <h2 class="secondary-page">Ссылки на авторов стороннего контента</h2> 
             Многие картинки (иконки, такие как иконка меню, фотография еды, которую я использую в качестве фона) взяты с других сайтов, поэтому здесь я указываю их авторов.
             <ol>
                 <li><a href="https://www.flaticon.com/authors/amonrat-rungreangfangsai">Автор иконки сайта (фавикона)</a></li>
@@ -47,7 +41,7 @@
                 <li><a href="https://www.flaticon.com/authors/maxim-basinski-premium ">Автор иконки "галочка"</a></li>
             </ol>
 
-            <h1>Ссылки на сайты, с которых я взяла рецепты</h1>
+            <h2 class="secondary-page">Ссылки на сайты, с которых я взяла рецепты</h2>
             Кроме того, все рецепты тоже взяты из Интернета. Поэтому я прикрепляю ссылки на сайты, откуда взяты рецепты.
             <ol>
                 <li><a href="https://lafoy.ru/">Lafoy</a></li>
@@ -56,17 +50,15 @@
             </ol>
         </main>
         <script type="module">
-            import {toggleNav, changeMainHeight} from "./nav_and_main_functions.js";
+            import {toggleNav, changeMainHeight, changeNavHeight} from "./nav_and_main_functions.js";
             
             let menu = document.querySelector(".menu-button");
             menu.addEventListener("click", toggleNav);
 
             window.addEventListener("resize", changeMainHeight);
+            window.addEventListener("resize", changeNavHeight);
 
             document.addEventListener("DOMContentLoaded", changeMainHeight);
-
-            let main = document.querySelector("main");
-            main.style.textAlign = "left";
         </script>
         <script src="./theme_toggle.js"></script>
     </body>

@@ -4,9 +4,28 @@
 
 import {main} from "./nav_and_main_functions.js";
 import ingredientsWithInfoLinks from "./ingredients_with_info_links.js"
+import { changeMainHeight } from "./nav_and_main_functions.js";
+
+const dialog = document.querySelector("#fullscreen-image");
+window.addEventListener("resize", () => resizeImage(dialog.querySelector("img")));
+dialog.querySelector(".close-button").addEventListener("click", () => dialog.close());
 
 let dlWithIngredientsInfo = document.createElement("dl");
 main.append(dlWithIngredientsInfo);
+dlWithIngredientsInfo.addEventListener("click", (event) => {
+    if(event.target.className === "img-of-ingredient-with-info") {
+        const src = event.target.src;
+        const alt = event.target.parentElement.parentElement.previousElementSibling.innerHTML;
+
+        const img = dialog.querySelector("img");
+
+        img.src = src;
+        img.alt = alt;
+
+        dialog.showModal();
+        resizeImage(img);
+    }
+})
 
 let ingredientsNames = localStorage.getItem("ingredientsNames").split(",")
 let descriptions = localStorage.getItem("descriptions").split(",");
@@ -15,6 +34,9 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     let dtForIngredientName = document.createElement("dt");
     dtForIngredientName.innerHTML = ingredientsNames[i];
     dlWithIngredientsInfo.append(dtForIngredientName);
+
+    const observer = new ResizeObserver(changeMainHeight);
+    observer.observe(dlWithIngredientsInfo);
 
     let divForDescriptionAndPicture = document.createElement("div");
     divForDescriptionAndPicture.className = "ingredients-info-div";
@@ -27,8 +49,6 @@ for (let i = 0; i < ingredientsNames.length; i++) {
 
     let imgForIngredient = document.createElement("img");
     imgForIngredient.src = `./assets/Ingredients_with_info_images/${ingredientsNames[i]}.jpg`
-    imgForIngredient.height = "100";
-    imgForIngredient.width = "200";
     imgForIngredient.className = "img-of-ingredient-with-info";
     figureForIngredient.append(imgForIngredient);
 
@@ -41,40 +61,25 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     dlWithIngredientsInfo.append(divForDescriptionAndPicture);
 }
 
-function changeSizeOfImages() {
-    let imagesOfIngredients = document.querySelectorAll(".img-of-ingredient-with-info");
-    let figures = document.querySelectorAll("figure");
-    let figcaptions = document.querySelectorAll("figcaption");
+function resizeImage(image) {
+    const ratio = image.naturalWidth / image.naturalHeight;
 
-    if (innerWidth <= 625) {
-        for (let i = 0; i < imagesOfIngredients.length; i++) {
-            let image = imagesOfIngredients[i];
-            image.height = "50";
-            image.width = "100";
+    const maxHeight = innerHeight * 0.95 - 100;
+    const maxWidth = innerWidth * 0.95 - 100;
 
-            let figure = figures[i];
-            figure.classList.add("small");
+    let width = 0;
+    let height = 0;
 
-            let figcaption = figcaptions[i];
-            figcaption.classList.add("small");
-        }
-    } else {
-        if (imagesOfIngredients[0].width == "100") {
-            for (let i = 0; i < imagesOfIngredients.length; i++) {
-                let image = imagesOfIngredients[i];
-                image.height = "100";
-                image.width = "200";
+    while(true) {
+        const newWidth = width + 10;
+        const newHeight = width * (1 / ratio);
 
-                let figure = figures[i];
-                figure.classList.remove("small");
+        if (newHeight > maxHeight || newWidth > maxWidth) break;
 
-                let figcaption = figcaptions[i];
-                figcaption.classList.remove("small");
-            } 
-        }
+        width = newWidth;
+        height = newHeight;
     }
+
+    image.width = width;
+    image.height = height;
 }
-
-window.addEventListener("resize", changeSizeOfImages)
-
-document.addEventListener("DOMContentLoaded", changeSizeOfImages);

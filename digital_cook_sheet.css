@@ -55,6 +55,7 @@ main {
     min-width: 550px;
     
     height: auto;
+    min-height: fit-content;
 
     padding: 20px;
 
@@ -65,14 +66,17 @@ main {
 
 main.secondary-page {
     padding-left: 10%;
-    padding-right: 30%;
+    padding-right: 10%;
 
     text-align: left;
 }
 
-button {
+main > button:first-child {
     margin-top: 7%;
-    margin-bottom: 7%
+}
+
+button {
+    margin-bottom: 10px;
 }
 
 .visually-hidden {
@@ -83,6 +87,27 @@ button {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+/*Dishes Search*/
+.dishes-finder {
+    width: 300px;
+    max-width: calc(100vw - 40px);
+    margin: 0 auto;
+}  
+
+.search-results ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.search-results ul li:first-child {
+    margin-top: 10px;
+}
+
+#close-dishes-finder {
+    margin-top: 10px;
 }
 
 /*Theme Toggler*/
@@ -135,7 +160,8 @@ nav {
     left: 3%;
     z-index: 1000;
 
-    width: auto;
+    width: fit-content;
+    height: fit-content;
     padding: 10px 30px;
     background-color: #337eb8;
     border-radius: 10px;
@@ -146,6 +172,7 @@ nav {
 }
 
 nav.hidden {
+    z-index: -1;
     padding-block: 0;
     min-height: 0;
     height: 0;
@@ -212,7 +239,7 @@ button, #continue, #ingredients-info {
 }
 
 button, #continue {
-    min-width: max-content;
+    width: max-content;
     min-height: 20px;
     padding-inline: 5px;
 
@@ -220,11 +247,7 @@ button, #continue {
 }
 
 #continue, #back-button {
-    margin: 20px 10px;
-}
-
-#back-button {
-    width: 13%;
+    margin: 20px 5px;
 }
 
 button:hover, 
@@ -298,17 +321,19 @@ h1.header {
     text-align: center;
 }
 
-h1.secondary-page {
+h2.secondary-page {
     margin-left: 0;
     margin-top: 0;
 }
+
+/*Dishes*/
 
 /*Form*/
 
 form {
     margin: 0 auto;
     width: 75%;
-    box-sizing: content-box;
+    padding-bottom: 20px;
 
     line-height: 1.5;
     text-align: left;
@@ -349,6 +374,10 @@ dt {
     color: #409ce3;
 }
 
+dd {
+    margin: 0;
+}
+
 figure {
     float: right;
 
@@ -356,42 +385,53 @@ figure {
     margin-left: 15px;
 
     padding-right: 15px;
+    width: fit-content;
+    text-align: center;
+}
 
-    width: 200px;
+figure.small {
+    margin: 0;
 }
 
 figure.recipe {
     float: right;
 }
 
-figure.small {
-    width: 100px;
-}
-
 figcaption {
-    width: 220px;
-    margin-left: -30px;
     text-align: center;
+    width: auto;
 }
 
 figcaption.recipe {
     width: 250px;
 }
 
-figcaption.small {
-    width: 115px;
-}
-
-.img-of-ingredient-with-info {
-    margin-right: 20px;
-}
-
 .ingredients-info-div {
     display: grid;
     grid-template-columns: auto 200px;
-    grid-column-gap: 30px;
+    grid-column-gap: 15px;
 
     grid-column-start: start;
+}
+
+.img-of-ingredient-with-info {
+   max-width: 100%;
+   max-height: 100%;
+
+   cursor: zoom-in;
+}
+
+#fullscreen-image {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    border: none;
+    text-align: center;
+}
+
+#fullscreen-image img {
+    margin-top: 10px;
+    border-radius: 30px;
 }
 
 /*Ingredients menu*/
@@ -435,7 +475,26 @@ figcaption.small {
     display: none;
 }
 
+.search-field {
+    display: block;
+    width: 300px;
+    max-width: calc(100vw - 40px);
+}
+
+.choose-all-div {
+    display: flex;
+    align-items: center;
+}
+
 /*Dishes menu*/
+
+#continue {
+    margin-top: 20px;
+}
+
+#back-button + #continue {
+    margin-top: 0;
+}
 
 .dishes-container {
     display: grid;
@@ -446,12 +505,28 @@ figcaption.small {
 
     margin: 10px auto;
     justify-content: start;
+    align-items: center;
     width: 75%;
 }
 
 
 .dishes-container #back-button {
-    margin: 0;
+    margin-inline: 0;
+}
+
+.dishes-container #back-button, .dishes-container #main-menu {
+    grid-column: span 2;
+    margin-block: 5px;
+}
+
+.dishes-container button {
+    margin-block: 5px;
+}
+
+h2 + #back-button, br + #main-menu {
+    margin-left: 12.5%;
+    margin-right: 20px;
+    margin-block: 5px;
 }
 
 .dish-item {
@@ -459,18 +534,11 @@ figcaption.small {
     list-style-type: disc;
 }
 
-.search-field {
-    display: block;
-    width: 300px;
-}
-
 /*Recipe and ingredients exclusion pop-ups*/
 
-.recipe-pop-up, .exclude-ingredients-pop-up {
+.recipe-pop-up, .exclude-ingredients-pop-up, #fullscreen-image[open] {
     z-index: 1000;
     position: fixed;
-
-    max-height: 80%;
 
     margin: 0 auto;
     overflow: auto;
@@ -484,18 +552,27 @@ figcaption.small {
     border-radius: 30px;
 }
 
+.recipe-pop-up, .exclude-ingredients-pop-up {
+    max-height: 80%;
+    text-align: left;
+}
+
 .recipe-pop-up {
     max-width: 75%;
     top: 20px;
 }
 
 .exclude-ingredients-pop-up {
-    top: calc(50% - 100px);
-    left: calc(50% - 210px);
-
     width: 420px;
-    height: 200px;
-    margin: 0 auto;
+    max-width: calc(100vw - 45px);
+    height: fit-content;
+    overflow: hidden;
+}
+
+.exclude-ingredients-pop-up, #fullscreen-image {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .recipe-title, .exclude-ingredients-title {
@@ -507,6 +584,7 @@ figcaption.small {
 
 .exclude-ingredients-title {
     text-align: center;
+    width: calc(95vw - 50px);
 }
 
 .frame-for-pop-up {
@@ -535,22 +613,32 @@ figcaption.small {
     background-color: transparent;
     background-image: url("./assets/close.png");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
    
     border: 0;
 }
 
+.close-button:focus {
+    outline: 2px solid #409ce3;
+}
+
 .img-of-dish, .img-of-ingredient-with-info {
     min-width: 1px;
-    float: right;
-
     border-radius: 20px;
+}
+
+.img-of-dish {
+    float: right;
 }
 
 .exclude-ingredients-panel {
     width: 350px;
+    max-width: calc(95vw - 50px);
     margin-top: 20px;
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 10px;
     justify-content: center;
+    align-items: center;
 }

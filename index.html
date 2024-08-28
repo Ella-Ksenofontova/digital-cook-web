@@ -37,16 +37,25 @@
         </ul>
     </nav>
     <main>
-        <button id="start">Начать</button>
+        <button id="start">Начать подбор</button><br />
+        <button id="find-dishes">Найти блюда</button>
+        <div class="dishes-finder" hidden>
+            <input type="text" name="search-field" id="search-field" placeholder="Введите название блюда">
+            <div class="search-results">
+                <ul></ul>
+            </div>
+            <button id="close-dishes-finder">Закрыть</button>
+        </div>
     </main>
     <script src="digital_cook_script.js" type="module">
     </script>
     <script type="module">
         import { App } from "./digital_cook_script.js";
-        let app = new App;
+        const app = new App;
         app.start();
     </script>
     <script src="./theme_toggle.js"></script>
+    <script src="./search_dishes.js" type="module"></script>
 </body>
 
 </html>

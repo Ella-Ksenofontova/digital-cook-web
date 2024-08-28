@@ -107,7 +107,8 @@
 /*Recipe and ingredients exclusion pop-ups*/
 
 [data-theme="dark"] .recipe-pop-up, 
-[data-theme="dark"] .exclude-ingredients-pop-up {
+[data-theme="dark"] .exclude-ingredients-pop-up,
+[data-theme="dark"] #fullscreen-image[open] {
     background-color: #a19e9e;
     border: 1px solid #4c4a4a;
 }

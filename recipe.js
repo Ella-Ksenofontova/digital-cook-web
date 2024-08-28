@@ -40,8 +40,6 @@ export function showRecipe(dish) {
 
     let recipePopUp = document.createElement("div");
     recipePopUp.className = "recipe-pop-up";
-    recipePopUp.itemscope = true;
-    recipePopUp.itemtype = "https://schema.org/Recipe";
 
     let main = document.querySelector("main");
 
@@ -55,7 +53,7 @@ export function showRecipe(dish) {
     title.innerHTML = dish;
     recipePopUp.append(title);
 
-    if (recipe.description) recipePopUp.insertAdjacentHTML("beforeend", `<span itemprop="description"><i>${recipe.description}</i><span><br>`);
+    if (recipe.description) recipePopUp.insertAdjacentHTML("beforeend", `<span><i>${recipe.description}</i><span><br>`);
         
     addYouNeedTitle();
     addDishFigure(dish);
@@ -142,7 +140,6 @@ function addDishFigure(dishName) {
 
     let dishImage = document.createElement("img");
     dishImage.src = dishImageSrc;
-    dishImage.itemprop = "image";
     dishImage.height = "100";
     dishImage.width = "200";
     dishImage.className = "img-of-dish";
@@ -165,16 +162,13 @@ function addDishFigure(dishName) {
 function addListItems(list, typeOfList) {
     let recipePopUp = document.querySelector(".recipe-pop-up");
     let divForItems = document.createElement("div");
-    if (typeOfList == "instructions") {
-        divForItems.itemprop = "instructions";
-    }
     recipePopUp.append(divForItems);
 
     for (let listItem of list) {
         if (typeOfList == "instructions") {
             divForItems.append(listItem);
         } else {
-            divForItems.insertAdjacentHTML("beforeend", `<span itemprop="recipeIngredient">${listItem}</span>`)
+            divForItems.insertAdjacentHTML("beforeend", `<span>${listItem}</span>`)
         }
         divForItems.append(document.createElement("br"));
     }

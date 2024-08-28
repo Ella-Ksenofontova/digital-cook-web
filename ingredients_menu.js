@@ -142,7 +142,7 @@ export function showHiddenCheckboxes() {
  */
 
 export function toggleAllFromCategory(event) {
-    if (event.target.parentElement.className === "choose-all-div") {
+    if (event.target.parentElement?.className === "choose-all-div") {
         let chooseAllElem = event.target;
         let chooseAllCheckbox = event.target.parentElement.querySelector(".choose-all-checkbox");
         let nextElem = chooseAllElem.parentNode.nextElementSibling;

@@ -39,9 +39,13 @@ export function changeNavHeight() {
 
 export function changeMainHeight() {
     let headerHeight = header.offsetHeight;
-
-    let mainHeight = Math.max(document.body.scrollHeight, innerHeight) - headerHeight;
-    main.style.height = `${mainHeight}px`;
+    const bottoms = Array.from(main.children).map(item => item.getBoundingClientRect().bottom);
+    const maxBottom = Math.max(...bottoms);
+    if (maxBottom + document.documentElement.scrollTop > innerHeight) {
+        setTimeout(() => main.style.height = `${maxBottom + document.documentElement.scrollTop - main.getBoundingClientRect().top - document.documentElement.scrollTop + 20}px`, 0);
+    } else {
+        main.style.height = `calc(100vh - ${headerHeight}px)`;
+    }
 }
 
 /**

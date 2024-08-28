@@ -50,7 +50,6 @@
 
     .search-field {
         height: 25px;
-        font-size: 1.25rem;
     }
 
     button, #continue, .choose-all-button {
@@ -60,21 +59,24 @@
     }
 
     #continue, #back-button {
+        margin-inline: 10px;
         margin-bottom: 5px;
     }
 
     #continue {
+        margin-top: 20px;
+    }
+
+    #back-button + #continue {
         margin-top: 5px;
     }
     
     h1, h2, h3 {
+        width: 100%;
         margin-inline: 0;
         margin-block: 10px;
     }
 
-    .ingredient-category-title {
-        font-size: 30px;
-    }
 
     #runtime-form {
         margin: 0;
@@ -84,10 +86,51 @@
         transition: none;
     }
 
-    .exclude-ingredients-title {
-        font-size: 1.5rem;
+    h2 + #back-button {
+        margin-left: 0;
     }
-}
+
+    .close-button:first-child {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .exclude-ingredients-panel {
+        max-width: calc(95vw - 30px);
+    }
+
+    .ingredients-info-div {
+        grid-template-columns: auto;
+        grid-row-gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    figure {
+        text-align: left;
+        margin: 0;
+    }
+
+    figcaption {
+        text-align: left;
+    }
+
+    figure.recipe {
+        margin-inline: 0;
+        margin-block: 10px;
+        padding: 0;
+        float: none;
+    }
+
+    .img-of-dish {
+        float: none;
+    }
+
+    dd {
+        margin: 0;
+    }
 
 @media screen and (max-width: 1000px) {
     body {
