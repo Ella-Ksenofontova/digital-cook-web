@@ -402,10 +402,6 @@ figcaption {
     width: auto;
 }
 
-figcaption.recipe {
-    width: 250px;
-}
-
 .ingredients-info-div {
     display: grid;
     grid-template-columns: auto 200px;
