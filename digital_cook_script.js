@@ -845,6 +845,7 @@ export class App {
         main.innerHTML = "";
         main.style.textAlign = "center";
         main.insertAdjacentHTML("beforeend", "<button id=\"start\">Начать подбор</button><br /><button id=\"find-dishes\">Найти блюда</button><div class=\"dishes-finder\" hidden><input type=\"text\" name=\"search-field\" id=\"search-field\" placeholder=\"Введите название блюда\"><div class=\"search-results\"><ul></ul></div><button id=\"close-dishes-finder\">Закрыть</button></div>");
+        changeMainHeight();
         this.start();
     }
 }

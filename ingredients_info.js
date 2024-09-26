@@ -48,7 +48,8 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     let figureForIngredient = document.createElement("figure");
 
     let imgForIngredient = document.createElement("img");
-    imgForIngredient.src = `./assets/Ingredients_with_info_images/${ingredientsNames[i]}.jpg`
+    imgForIngredient.src = `./assets/Ingredients_with_info_images/${ingredientsNames[i]}.jpg`;
+    imgForIngredient.alt = ingredientsNames[i];
     imgForIngredient.className = "img-of-ingredient-with-info";
     figureForIngredient.append(imgForIngredient);
 

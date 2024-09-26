@@ -124,6 +124,7 @@ function closeRecipePopUp() {
 
 /**
  * Adds figure with dish image and link to its source as a caption. Used in _showRecipe_ function.
+ * @param {string} dishName - Name of the dish.
  * @see showRecipe
  */
 
@@ -143,6 +144,7 @@ function addDishFigure(dishName) {
     dishImage.height = "100";
     dishImage.width = "200";
     dishImage.className = "img-of-dish";
+    dishImage.alt = dishName;
 
     dishFigure.append(dishImage);
 
