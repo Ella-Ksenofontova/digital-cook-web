@@ -156,13 +156,13 @@ button {
 
 nav {
     position: absolute;
-    transform: translateY(2px);
-    left: 3%;
+    left: calc(2% + 10px);
+    transform: translateY(-25px);
     z-index: 1000;
 
     width: fit-content;
     height: fit-content;
-    padding: 10px 30px;
+    padding: 10px;
     background-color: #337eb8;
     border-radius: 10px;
     text-align: left;
@@ -340,7 +340,7 @@ form {
 }
 
 input[type="checkbox"] {
-    visibility: hidden;
+    display: none;
 }
 
 .pseudo-checkbox {
@@ -438,7 +438,7 @@ figcaption {
     left: 0;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 0 25px auto auto;
+    grid-template-columns: 25px auto auto;
     justify-content: start;
     align-items: center;
 
@@ -451,7 +451,7 @@ figcaption {
 
 .ingredient-category-title,
 .no-ingredients-title {
-    grid-column-start: span 3;
+    grid-column: span 2;
 }
 
 .ingredient-name {

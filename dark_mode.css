@@ -131,6 +131,10 @@
     border: 0;
 }
 
+[data-theme="dark"] .close-button:focus {
+    outline-color: #000;
+}
+
 [data-theme="dark"] .recipe-title, 
 [data-theme="dark"] .exclude-ingredients-title {
     color: white;

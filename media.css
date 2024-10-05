@@ -43,6 +43,7 @@
     }
 
     nav {
+        transform: translateY(-35px);
         right: 0;
         left: 0;
     }
@@ -131,6 +132,7 @@
     dd {
         margin: 0;
     }
+}
 
 @media screen and (max-width: 1000px) {
     body {

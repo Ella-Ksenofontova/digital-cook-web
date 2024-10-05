@@ -100,6 +100,7 @@ export class App {
 
         let startButton = document.getElementById("start");
         startButton.remove();
+        document.querySelector("br").remove();
         const findDishesButton = document.querySelector("#find-dishes");
         findDishesButton.remove();
         const dishesFinder = document.querySelector(".dishes-finder");
