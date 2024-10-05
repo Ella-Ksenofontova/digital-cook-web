@@ -450,12 +450,8 @@ figcaption {
 }
 
 .ingredient-category-title,
-.no-ingredients-title {
+.no-ingredients-title, .ingredient-name {
     grid-column: span 2;
-}
-
-.ingredient-name {
-    grid-column-start: span 2;
 }
 
 .ingredient-category-title {
