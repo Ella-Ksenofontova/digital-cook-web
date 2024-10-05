@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Ссылки</title>
-        <link type="Image/x-icon" href="./assets/favicon.png" rel="icon">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./digital_cook_sheet.css">
-        <link rel="stylesheet" href="./media.css">
-    </head>
-    <body>
-        <header>
-            <button class="menu-button"></button>
-            <div class="logo"></div>
-            <div class="theme-toggler">
-                <span class="visually-hidden">Сменить тему приложения</span>
-                <div class="thumb"></div>
-            </div>
-        </header>
-        <nav class="hidden">
-            <span aria-hidden="true">ℹ</span>
-            <a class="nav-link hidden"href="./info_about_app.html" tabindex="-1">
-                Информация о приложении
-            </a><br>
-            <span id="homepage" aria-hidden="true"></span>
-            <a class="nav-link hidden"  href="./index.html" tabindex="-1">
-                Вернуться на главную
-            </a>
-        </nav>
-        <main class="secondary-page">
-           <h2 class="secondary-page">Ссылки на авторов стороннего контента</h2> 
-            Многие картинки (иконки, такие как иконка меню, фотография еды, которую я использую в качестве фона) взяты с других сайтов, поэтому здесь я указываю их авторов.
-            <ol>
-                <li><a href="https://www.flaticon.com/authors/amonrat-rungreangfangsai">Автор иконки сайта (фавикона)</a></li>
-                <li><a href="https://ru.freepik.com/author/valeria-aksakova">Автор изображения, которое я использую как фон</a></li>
-                <li><a href="https://www.flaticon.com/ru/authors/anggara">Автор иконки "инфо", которую я использую для справки по ингредиентам</a></li>
-                <li><a href="https://www.flaticon.com/authors/icon-wind">Автор иконки "меню"</a></li>
-                <li><a href="https://icon54.com/">Ссылка на автора иконки "закрыть" (используется при показе рецептов)</a></li>
-                <li><a href="https://www.flaticon.com/authors/freepik">Автор иконок солнца и луны на переключателе тем</a></li>
-                <li><a href="https://www.flaticon.com/authors/freepik">Автор иконки "на главную"</a></li>
-                <li><a href="https://www.flaticon.com/authors/maxim-basinski-premium ">Автор иконки "галочка"</a></li>
-            </ol>
 
-            <h2 class="secondary-page">Ссылки на сайты, с которых я взяла рецепты</h2>
-            Кроме того, все рецепты тоже взяты из Интернета. Поэтому я прикрепляю ссылки на сайты, откуда взяты рецепты.
-            <ol>
-                <li><a href="https://lafoy.ru/">Lafoy</a></li>
-                <li><a href="https://eda.ru/">Eda.ru</a></li>
-                <li><a href="https://www.russianfood.com/">Russian food</a></li>
-            </ol>
-        </main>
-        <script type="module">
-            import {toggleNav, changeMainHeight, changeNavHeight} from "./nav_and_main_functions.js";
-            
-            let menu = document.querySelector(".menu-button");
-            menu.addEventListener("click", toggleNav);
+<head>
+    <title>Ссылки</title>
+    <link type="Image/x-icon" href="./assets/favicon.png" rel="icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./digital_cook_sheet.css">
+    <link rel="stylesheet" href="./media.css">
+</head>
 
-            window.addEventListener("resize", changeMainHeight);
-            window.addEventListener("resize", changeNavHeight);
+<body>
+    <header>
+        <button class="menu-button"></button>
+        <div class="logo"></div>
+        <div class="theme-toggler">
+            <span class="visually-hidden">Сменить тему приложения</span>
+            <div class="thumb"></div>
+        </div>
+    </header>
+    <nav class="hidden">
+        <span aria-hidden="true">ℹ</span>
+        <a class="nav-link hidden" href="./info_about_app.html" tabindex="-1">
+            Информация о приложении
+        </a><br>
+        <span id="homepage" aria-hidden="true"></span>
+        <a class="nav-link hidden" href="./index.html" tabindex="-1">
+            Вернуться на главную
+        </a>
+    </nav>
+    <main class="secondary-page">
+        <h2 class="secondary-page">Ссылки на авторов стороннего контента</h2>
+        Многие картинки (иконки, такие как иконка меню, фотография еды, которую я использую в качестве фона) взяты с
+        других сайтов, поэтому здесь я указываю их авторов.
+        <ol>
+            <li><a href="https://www.flaticon.com/authors/amonrat-rungreangfangsai">Автор иконки сайта (фавикона)</a>
+            </li>
+            <li><a href="https://ru.freepik.com/author/valeria-aksakova">Автор изображения, которое я использую как
+                    фон</a></li>
+            <li><a href="https://www.flaticon.com/ru/authors/anggara">Автор иконки "инфо", которую я использую для
+                    справки по ингредиентам</a></li>
+            <li><a href="https://www.flaticon.com/authors/icon-wind">Автор иконки "меню"</a></li>
+            <li><a href="https://icon54.com/">Ссылка на автора иконки "закрыть" (используется при показе рецептов)</a>
+            </li>
+            <li><a href="https://www.flaticon.com/authors/freepik">Автор иконок солнца и луны на переключателе тем</a>
+            </li>
+            <li><a href="https://www.flaticon.com/authors/freepik">Автор иконки "на главную"</a></li>
+            <li><a href="https://www.flaticon.com/authors/maxim-basinski-premium ">Автор иконки "галочка"</a></li>
+        </ol>
 
-            document.addEventListener("DOMContentLoaded", changeMainHeight);
-        </script>
-        <script src="./theme_toggle.js"></script>
-    </body>
+        <h2 class="secondary-page">Ссылки на сайты, с которых я взяла рецепты</h2>
+        Кроме того, все рецепты тоже взяты из Интернета. Поэтому я прикрепляю ссылки на сайты, откуда взяты рецепты.
+        <ol>
+            <li><a href="https://lafoy.ru/">Lafoy</a></li>
+            <li><a href="https://eda.ru/">Eda.ru</a></li>
+            <li><a href="https://www.russianfood.com/">Russian food</a></li>
+        </ol>
+    </main>
+    <script type="module">
+        import { toggleNav, changeMainHeight, changeNavHeight } from "./nav_and_main_functions.js";
+
+        let menu = document.querySelector(".menu-button");
+        menu.addEventListener("click", toggleNav);
+
+        window.addEventListener("resize", changeMainHeight);
+        window.addEventListener("resize", changeNavHeight);
+
+        document.addEventListener("DOMContentLoaded", changeMainHeight);
+
+        window.addEventListener("click", function (event) {
+            if (event.target.tagName != "NAV" && !event.target.classList.contains("menu-button") && !document.querySelector("nav").classList.contains("hidden")) {
+                if (window.matchMedia("min-width: 500px").matches) {
+                    setTimeout(() => toggleNav(), 500);
+                } else {
+                    toggleNav();
+                }
+            }
+        });
+    </script>
+    <script src="./theme_toggle.js"></script>
+</body>
+
 </html>

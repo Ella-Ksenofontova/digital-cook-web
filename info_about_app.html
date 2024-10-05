@@ -47,6 +47,16 @@
         window.addEventListener("resize", changeNavHeight);
 
         document.addEventListener("DOMContentLoaded", changeMainHeight);
+
+        window.addEventListener("click", function(event) {
+            if (event.target.tagName != "NAV" && !event.target.classList.contains("menu-button") && !document.querySelector("nav").classList.contains("hidden")) {
+                if (window.matchMedia("min-width: 500px").matches) {
+                    setTimeout(() => toggleNav(), 500);
+                } else {
+                    toggleNav();
+                }
+            }
+        });
     </script>
     <script src="./theme_toggle.js"></script>
 </body>
