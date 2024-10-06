@@ -516,14 +516,18 @@ export class App {
 
     changeFormHandler() {
         let noAppropriateIngredients = this.appropriateIngredients.reduce((total, item) => item.length == 0 && total, true);
-
+        const appropriateIngredientsArray = this.appropriateIngredients.reduce((total, current) => total.concat(current), []);
         if (noAppropriateIngredients) {
             document.getElementById("runtime-form").onsubmit = event => this.finalize(event);
         } else {
             document.getElementById("runtime-form").onsubmit = event => {
                 event.preventDefault();
                 this.analyseIngredients();
-                this.showExcludeIngredientsPopUp();
+                if(appropriateIngredientsArray.length !== this.chosenIngredients.length) {
+                    this.showExcludeIngredientsPopUp();
+                } else {
+                    this.showAppropriateDishes();
+                }
             };
         }
     }

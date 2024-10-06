@@ -62,6 +62,12 @@
                 }
             }
         });
+
+        window.addEventListener("beforeunload", () => {
+            console.log(1);
+            localStorage.setItem("ingredientsNames", "");
+            localStorage.setItem("descriptions", "");
+        })
         </script>
         <script src="./theme_toggle.js"></script>
     </body>

@@ -2,33 +2,41 @@
  * @file Adds a content to page with info about some little-known ingredients.
  */
 
-import {main} from "./nav_and_main_functions.js";
+import { main } from "./nav_and_main_functions.js";
 import ingredientsWithInfoLinks from "./ingredients_with_info_links.js"
 import { changeMainHeight } from "./nav_and_main_functions.js";
 
-const dialog = document.querySelector("#fullscreen-image");
-window.addEventListener("resize", () => resizeImage(dialog.querySelector("img")));
-dialog.querySelector(".close-button").addEventListener("click", () => dialog.close());
+let ingredientsNames = localStorage.getItem("ingredientsNames");
+let descriptions;
+let dlWithIngredientsInfo;
 
-let dlWithIngredientsInfo = document.createElement("dl");
-main.append(dlWithIngredientsInfo);
-dlWithIngredientsInfo.addEventListener("click", (event) => {
-    if(event.target.className === "img-of-ingredient-with-info") {
-        const src = event.target.src;
-        const alt = event.target.parentElement.parentElement.previousElementSibling.innerHTML;
+if (ingredientsNames) {
+    ingredientsNames = ingredientsNames.split(",");
+    descriptions = localStorage.getItem("descriptions").split(",");
 
-        const img = dialog.querySelector("img");
+    const dialog = document.querySelector("#fullscreen-image");
+    window.addEventListener("resize", () => resizeImage(dialog.querySelector("img")));
+    dialog.querySelector(".close-button").addEventListener("click", () => dialog.close());
 
-        img.src = src;
-        img.alt = alt;
+    dlWithIngredientsInfo = document.createElement("dl");
+    main.append(dlWithIngredientsInfo);
+    dlWithIngredientsInfo.addEventListener("click", (event) => {
+        if (event.target.className === "img-of-ingredient-with-info") {
+            const src = event.target.src;
+            const alt = event.target.parentElement.parentElement.previousElementSibling.innerHTML;
 
-        dialog.showModal();
-        resizeImage(img);
-    }
-})
+            const img = dialog.querySelector("img");
 
-let ingredientsNames = localStorage.getItem("ingredientsNames").split(",")
-let descriptions = localStorage.getItem("descriptions").split(",");
+            img.src = src;
+            img.alt = alt;
+
+            dialog.showModal();
+            resizeImage(img);
+        }
+    });
+} else {
+    main.insertAdjacentHTML("beforeend", "Подходящие ингредиенты не найдены либо Вы перешли сюда не с этапа подбора ингредиентов. <br /> <a href=\"/\">На главную</a>")
+}
 
 for (let i = 0; i < ingredientsNames.length; i++) {
     let dtForIngredientName = document.createElement("dt");
@@ -44,7 +52,7 @@ for (let i = 0; i < ingredientsNames.length; i++) {
     let ddForIngredientDescription = document.createElement("dd");
     ddForIngredientDescription.innerHTML = descriptions[i].replace((/\?/g), ",");
     divForDescriptionAndPicture.append(ddForIngredientDescription);
-    
+
     let figureForIngredient = document.createElement("figure");
 
     let imgForIngredient = document.createElement("img");
@@ -71,7 +79,7 @@ function resizeImage(image) {
     let width = 0;
     let height = 0;
 
-    while(true) {
+    while (true) {
         const newWidth = width + 10;
         const newHeight = width * (1 / ratio);
 
