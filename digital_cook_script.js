@@ -717,13 +717,14 @@ export class App {
 
             for (let dish of usageOfIngredient) {
                 let dishInfo = DISHES.find(item => item[0].toLowerCase() == dish.toLowerCase());
+                dish = dishInfo[0];
 
                 let dishType = dishInfo[3];
                 let cuisine = dishInfo[4];
 
                 if (this.chosenDishTypes.includes(dishType) && this.chosenCuisines.includes(cuisine) && 
-                !appropriateDishes.includes(capitalize(dish)) && !dishesWithExcludedIngredients.includes(dish.toLowerCase())) {
-                    appropriateDishes.push(capitalize(dish));
+                !appropriateDishes.includes(dish) && !dishesWithExcludedIngredients.includes(dish.toLowerCase())) {
+                    appropriateDishes.push(dish);
                 }
             }
         }
@@ -852,21 +853,5 @@ export class App {
         main.insertAdjacentHTML("beforeend", "<button id=\"start\">Начать подбор</button><br /><button id=\"find-dishes\">Найти блюда</button><div class=\"dishes-finder\" hidden><input type=\"text\" name=\"search-field\" id=\"search-field\" placeholder=\"Введите название блюда\"><div class=\"search-results\"><ul></ul></div><button id=\"close-dishes-finder\">Закрыть</button></div>");
         changeMainHeight();
         this.start();
-    }
-}
-
-/**
- * Capitalizes passed string like in sentences. If initial string contains quotes, this function also capitalizes text in it.
- * @param {string} word - string that needs to be capitalized
- * @returns {string} capitalized string
- */
-
-function capitalize(word) {
-    if (!word.includes('"')) {
-        return word[0].toUpperCase() + word.slice(1).toLowerCase();
-    } else {
-        let firstIndexOfQuotes = word.indexOf('"');
-        return word[0].toUpperCase() + word.slice(1, firstIndexOfQuotes + 1).toLowerCase() + word.slice(firstIndexOfQuotes + 1, firstIndexOfQuotes + 2).toUpperCase() +
-        word.slice(firstIndexOfQuotes + 2).toLowerCase();
     }
 }
