@@ -40,6 +40,7 @@ export function showRecipe(dish) {
 
     let recipePopUp = document.createElement("div");
     recipePopUp.className = "recipe-pop-up";
+    recipePopUp.id = "recipe-pop-up";
 
     let main = document.querySelector("main");
 
@@ -64,7 +65,7 @@ export function showRecipe(dish) {
     addInstructionsTitle();
 
     let instructions = recipe.instructions.split("\n");
-    addListItems(instructions);  
+    addListItems(instructions); 
 }
 
 /**

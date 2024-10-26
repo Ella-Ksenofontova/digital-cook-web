@@ -65,17 +65,18 @@ function changeChooseAllDivVisibility() {
         let firstCheckboxOfCategory = chooseAllDiv.nextElementSibling;
         let checkboxesOfCategory = getCheckboxesAndCheckboxOfCategory(firstCheckboxOfCategory).checkboxes;
 
+        
         let visibilityOfCheckboxes = checkboxesOfCategory.map(item => item.hidden);
         if (visibilityOfCheckboxes.includes(true)) {
-            chooseAllDiv.hidden = true;
+            chooseAllDiv.classList.add("hidden");
             let placeholder = document.querySelector(`#placeholder${i + 1}`);
             if (!placeholder) {
                 chooseAllDiv.insertAdjacentHTML("afterend", `<div id="placeholder${i + 1}"></div>`);
             }
-        } else if (chooseAllDiv.hidden) {
-            chooseAllDiv.hidden = false;
+        } else {
+            chooseAllDiv.classList.remove("hidden");
             let placeholder = document.querySelector(`#placeholder${i + 1}`);
-            placeholder.remove();
+            if (placeholder) placeholder.remove();
         }
     }   
 }

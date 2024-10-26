@@ -109,6 +109,7 @@ export class App {
         let runtimeTitle = document.createElement("h2");
         runtimeTitle.id = "runtime-title";
         runtimeTitle.innerHTML = "Блюда каких кухонь вам нравятся?";
+        runtimeTitle.setAttribute("aria-live", "assertive");
         main.append(runtimeTitle);
 
         let runtimeForm = document.createElement("form");
@@ -120,6 +121,7 @@ export class App {
         continueButton.type = "submit";
         continueButton.id = "continue";
         continueButton.value = "Продолжить";
+        continueButton.setAttribute("aria-flowto", "runtime-title");
 
         runtimeForm.append(continueButton);
     }
@@ -462,6 +464,7 @@ export class App {
                 dishesContainer.remove();
             } else {
                 document.getElementById("back-button").remove();
+                document.getElementById("main-menu").remove();
             }
 
             let runtimeForm = document.createElement("form");
@@ -836,7 +839,9 @@ export class App {
 
     showRecipeIfFound(event) {
         let dishName = this.getDishForRecipe(event.target);
-        if (dishName) showRecipe(dishName);
+        if (dishName && !document.getElementById("recipe-pop-up")) { 
+            showRecipe(dishName);
+        }
     }
 
     addBackToMainMenuButton() {

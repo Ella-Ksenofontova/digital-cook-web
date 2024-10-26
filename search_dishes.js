@@ -39,7 +39,7 @@ function showResults(appropriateNames) {
   const ul = document.querySelector(".search-results ul");
   ul.innerHTML = "";
   for (let name of appropriateNames) {
-    ul.insertAdjacentHTML("beforeend", `<li>${name}<br/><button>Посмотреть рецепт</button></li>`);
+    ul.insertAdjacentHTML("beforeend", `<li>${name}<br/><button aria-flowto=\"recipe-pop-up\">Посмотреть рецепт</button></li>`);
   }
 }
 
@@ -47,6 +47,8 @@ const dishesFinder = document.querySelector(".dishes-finder");
 dishesFinder.addEventListener("click", (event) => {
   if (event.target.tagName == "BUTTON" && !event.target.id) {
     const dishName = event.target.previousSibling.previousSibling.textContent;
-    showRecipe(dishName);
+    if(!document.getElementById("recipe-pop-up")) {
+      showRecipe(dishName);
+    }
   }
 })
