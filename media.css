@@ -132,6 +132,11 @@
     dd {
         margin: 0;
     }
+
+    .recipe-pop-up {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 @media screen and (max-width: 1000px) {
