@@ -690,6 +690,13 @@ export class App {
             };
         }
 
+        let chooseAllDivs = document.querySelectorAll(".choose-all-div");
+        for (let chooseAllDiv of chooseAllDivs) {
+            if (chooseAllDiv.firstElementChild.checked) {
+                chooseAllDiv.classList.add("hidden");
+            }
+        }
+
         window.scrollTo(0, 0);
     }
 

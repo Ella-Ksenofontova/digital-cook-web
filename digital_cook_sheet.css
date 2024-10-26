@@ -358,7 +358,7 @@ input[type="checkbox"]:checked + .pseudo-checkbox {
     background-image: url("assets/checkbox_checked.png");
 }
 
-.pseudo-checkbox.hidden {
+.pseudo-checkbox.hidden, .choose-all-div.hidden {
     display: none;
 }
 

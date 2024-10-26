@@ -48,7 +48,7 @@ export function showRecipe(dish) {
 
     addCloseButton(recipePopUp);
 
-    let title = document.createElement("h1");
+    let title = document.createElement("h2");
     title.className = "recipe-title";
     title.innerHTML = dish;
     recipePopUp.append(title);

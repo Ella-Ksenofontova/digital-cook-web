@@ -134,6 +134,14 @@ export function showHiddenCheckboxes() {
             checkbox.nextElementSibling.nextElementSibling.hidden = false;
          }
     }
+
+    let chooseAllDivs = document.querySelectorAll(".choose-all-div");
+        for (let chooseAllDiv of chooseAllDivs) {
+            if (chooseAllDiv.firstElementChild.checked) {
+                chooseAllDiv.classList.remove("hidden");
+                chooseAllDiv.firstElementChild.checked = false;
+            }
+        }
 }
 
 /**
