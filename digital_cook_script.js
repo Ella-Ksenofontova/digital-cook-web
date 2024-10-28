@@ -3,7 +3,7 @@ import {DISHES} from "./dishes_presets.js";
 import {INGREDIENTS} from "./ingredients_presets.js";
 import { INGREDIENTS_INFO } from "./ingredients_info_presets.js";
 
-import {removeDishTypesMenu, addSearchField, showHiddenCheckboxes, createIngredientsCategoryTitle, addNoIngredientsTitle, addIngredientsOfCategory, toggleAllFromCategory} from "./ingredients_menu.js";
+import {removeDishTypesMenu, addSearchField, showHiddenCheckboxes, createIngredientsCategoryTitle, addNoIngredientsTitle, addIngredientsOfCategory, toggleAllFromCategory, toggleChooseAllDiv} from "./ingredients_menu.js";
 import {showRecipe} from "./recipe.js";
 import {changeMainHeight, toggleNav, changeNavHeight, main} from "./nav_and_main_functions.js";
 
@@ -445,6 +445,7 @@ export class App {
         if (!fromExcludeMenu) this.fillIngredientsContainer();
         this.changeFormHandler();
 
+        document.body.addEventListener("click", toggleChooseAllDiv);
         document.getElementById("back-button").onclick = () => this.showTypesMenu(true);
         document.body.addEventListener("click", toggleAllFromCategory);
         window.scrollTo(0, 0);
@@ -527,6 +528,7 @@ export class App {
                 event.preventDefault();
                 this.analyseIngredients();
                 if(appropriateIngredientsArray.length !== this.chosenIngredients.length) {
+                    document.getElementById("continue").setAttribute("aria-flowto", "exclude-ingredients-pop-up");
                     this.showExcludeIngredientsPopUp();
                 } else {
                     this.showAppropriateDishes();
@@ -634,8 +636,9 @@ export class App {
 
         let excludeIngredientsPopUp = document.createElement("div");
         excludeIngredientsPopUp.className = "exclude-ingredients-pop-up";
-        excludeIngredientsPopUp.innerHTML = `<button class="close-button"></button>
-        <h2 class="exclude-ingredients-title">Хотите ли вы исключить какие-либо ингредиенты?</h2>
+        excludeIngredientsPopUp.id = "exclude-ingredients-pop-up";
+        excludeIngredientsPopUp.innerHTML = `<button class="close-button"><span class="visually-hidden">Закрыть</span></button>
+        <div class="exclude-ingredients-title">Хотите ли вы исключить какие-либо ингредиенты?</div>
         <div class="exclude-ingredients-panel">
         <button id="exclude-ingredients">Да</button>
         <button id="no-exclude-ingredients">Нет</button>
@@ -647,9 +650,11 @@ export class App {
         document.getElementById("exclude-ingredients").onclick = () => {
             this.closeExcludeIngredientsPopUp();
             this.showExcludeIngredientsMenu();
+            document.getElementById("continue").setAttribute("aria-flowto", "runtime-title");
         };
         document.getElementById("no-exclude-ingredients").onclick = event => {
             this.closeExcludeIngredientsPopUp();
+            document.getElementById("continue").setAttribute("aria-flowto", "runtime-title");
             this.finalize(event);
         }
     }
@@ -800,6 +805,7 @@ export class App {
             recipeButton.innerHTML = "Рецепт";
             recipeButton.className = "recipe-button";
             dishContainer.append(recipeButton);
+            recipeButton.setAttribute("aria-flowto", "recipe-pop-up");
         }
 
         document.body.addEventListener("click",  this.showRecipeIfFound);

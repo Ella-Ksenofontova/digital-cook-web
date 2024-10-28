@@ -9,19 +9,20 @@ header {
     justify-content: space-between;
     align-items: center;
     
-    padding: 3px;
+    padding: 7px;
     margin-right: 15%;
     margin-left: 2%;
 
     min-width: 550px;
+    min-height: 100px;
     box-sizing: border-box;
 
     background-color: #409ce3;
     color: white;
     
     text-align: center;
-
-    min-height: 100px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
 .logo {
@@ -62,6 +63,8 @@ main {
     text-align: center;
     background-color: #d7ebfa;
     background-clip: padding-box;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 main.secondary-page {
@@ -326,6 +329,10 @@ h2.secondary-page {
     margin-top: 0;
 }
 
+h1 {
+    font-size: 1.8rem;
+}
+
 /*Dishes*/
 
 /*Form*/
@@ -569,14 +576,21 @@ h2 + #back-button, br + #main-menu {
 
 .recipe-title, .exclude-ingredients-title {
     margin: 0;
+    font-size: 1.5em;
 
+    color: #409ce3;
+    font-weight: bold;
+}
+
+.instructions-title, .you-need-title {
+    font-size: 1.3rem;
     color: #409ce3;
     font-weight: bold;
 }
 
 .exclude-ingredients-title {
     text-align: center;
-    width: calc(95vw - 50px);
+    width: calc(95% - 50px);
 }
 
 .frame-for-pop-up {

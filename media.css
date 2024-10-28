@@ -23,6 +23,7 @@
         margin: 0;
         min-width: 100%;
         max-width: 100%;
+        border-radius: 0;
     }
 
     main {
@@ -101,6 +102,10 @@
 
     .exclude-ingredients-panel {
         max-width: calc(95vw - 30px);
+    }
+
+    .exclude-ingredients-title {
+        width: calc(95% - 30px);
     }
 
     .ingredients-info-div {

@@ -49,7 +49,7 @@ export function showRecipe(dish) {
 
     addCloseButton(recipePopUp);
 
-    let title = document.createElement("h2");
+    let title = document.createElement("div");
     title.className = "recipe-title";
     title.innerHTML = dish;
     recipePopUp.append(title);
@@ -77,7 +77,7 @@ function addYouNeedTitle() {
     let recipePopUp = document.querySelector(".recipe-pop-up");
 
     let youNeedTitle = document.createElement("div");
-    youNeedTitle.className = "recipe-title";
+    youNeedTitle.className = "you-need-title";
     youNeedTitle.innerHTML = "Вам понадобится:";
     recipePopUp.append(youNeedTitle);
 }
@@ -91,7 +91,7 @@ function addInstructionsTitle() {
     let recipePopUp = document.querySelector(".recipe-pop-up");
 
     let instructionsTitle = document.createElement("div");
-    instructionsTitle.className = "instrucrtions-title";
+    instructionsTitle.className = "instructions-title";
     instructionsTitle.innerHTML = "Рецепт:"
     recipePopUp.append(instructionsTitle);
 }
@@ -106,6 +106,7 @@ function addCloseButton() {
 
     let closeButton = document.createElement("button");
     closeButton.className = "close-button";
+    closeButton.insertAdjacentHTML("beforeend", "<span class=\"visually-hidden\">Закрыть</span>")
     recipePopUp.append(closeButton);
 
     closeButton.addEventListener("click", closeRecipePopUp);

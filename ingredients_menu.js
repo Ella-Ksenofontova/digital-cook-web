@@ -196,6 +196,31 @@ function getCheckboxesAndCheckboxOfCategory(currentCheckbox) {
     };
 }
 
+export function toggleChooseAllDiv(event) {
+    const target = event.target;
+
+    if (target.previousElementSibling?.id.startsWith("ingredient-checkbox") || target.previousElementSibling?.previousElementSibling?.id.startsWith("ingredient-checkbox")) {
+
+        let chooseAllCheckbox, checkboxes;
+        let currentCheckbox;
+
+        if (target.previousElementSibling.id.startsWith("ingredient-checkbox")) {
+            currentCheckbox = target.previousElementSibling;
+        } else if (target.previousElementSibling.previousElementSibling.id.startsWith("ingredient-checkbox")) {
+            currentCheckbox = target.previousElementSibling.previousElementSibling;
+        }
+
+        ({chooseAllCheckbox, checkboxes} = getCheckboxesAndCheckboxOfCategory(currentCheckbox));
+
+        let checkboxesStates = checkboxes.map(item => item === currentCheckbox ? !item.checked : item.checked);
+        if (!checkboxesStates.includes(true) && chooseAllCheckbox.checked) {
+            chooseAllCheckbox.checked = false;
+        } else if (!checkboxesStates.includes(false) && !chooseAllCheckbox.checked) {
+            chooseAllCheckbox.checked = true;
+        }
+    }
+}
+
 /**
  * Adds message that there's no appropriate ingredients of this category.
  */
