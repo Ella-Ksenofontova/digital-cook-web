@@ -850,6 +850,10 @@ export class App {
         }
     }
 
+    /**
+     * Adds button that can be used for navigating to main menu.
+    */
+
     addBackToMainMenuButton() {
         const backToMainMenu = document.createElement("button");
         backToMainMenu.id = "main-menu";
@@ -864,6 +868,10 @@ export class App {
 
         backToMainMenu.addEventListener("click", () => this.goToMainMenu());
     }
+
+    /**
+     * Cleans up the _main_ tag and adds initial HTML to it.
+     */
 
     goToMainMenu() {
         main.innerHTML = "";

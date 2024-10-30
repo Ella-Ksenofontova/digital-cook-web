@@ -58,6 +58,10 @@ export function findMatchingIngredients(event) {
     changeChooseAllDivVisibility();
 }
 
+/**
+ * changes visibility of div with "choose all" checkbutton when some elements of category become invisible.
+ */
+
 function changeChooseAllDivVisibility() {
     let chooseAllDivs = document.querySelectorAll(".choose-all-div");
     for (let i = 0; i < chooseAllDivs.length; i++) {
@@ -167,6 +171,15 @@ export function toggleAllFromCategory(event) {
     }
 }
 
+/**
+ * 
+ * @param {HTMLInputElement} currentCheckbox - checkbox which value was changed by user.
+ * @typedef {Object} CheckboxesData
+ * @property {HTMLInputElement} chooseAllCheckbox - "choose all" checkbox of this category
+ * @property {Array[HTMLInputElement]} checkboxes - all checkboxes of this category
+ * @see toggleChooseAllDiv
+ */
+
 function getCheckboxesAndCheckboxOfCategory(currentCheckbox) {
     let checkboxes = [currentCheckbox];
     let nextElem = currentCheckbox.nextElementSibling;
@@ -195,6 +208,10 @@ function getCheckboxesAndCheckboxOfCategory(currentCheckbox) {
         checkboxes: checkboxes
     };
 }
+
+/**
+ * User can choose (or unselect) all items in category manually, without use of corresponding checkbox. This function handles such case.
+ */
 
 export function toggleChooseAllDiv(event) {
     const target = event.target;

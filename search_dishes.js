@@ -20,7 +20,13 @@ searchField.addEventListener("input", (event) => {
   const dishes = findDishes(event.target.value);
   showResults(dishes);
   changeMainHeight();
-})
+});
+
+/**
+ * Find dishes that match the query.
+ * @param {string} query - user's query. 
+ * @returns {string[]} - array of names of dishes that match the query.
+ */
 
 function findDishes(query) {
   const dishesNames = DISHES.map(item => item[0]);
@@ -34,6 +40,11 @@ function findDishes(query) {
 
   return appropriateNames;
 }
+
+/**
+ * Shows appropriate dishes on the page.
+ * @param {string[]} appropriateNames 
+ */
 
 function showResults(appropriateNames) {
   const ul = document.querySelector(".search-results ul");

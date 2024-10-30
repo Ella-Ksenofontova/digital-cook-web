@@ -20,6 +20,10 @@ export function toggleNav() {
     nav.style.height = `${heightOfNav}px`;
 }
 
+/**
+ * Changes height of _nav_ tag when it is being either opened or closed.
+ */
+
 export function changeNavHeight() {
     let navLinks = nav.querySelectorAll(".nav-link");
     let heightOfNav = 0;
