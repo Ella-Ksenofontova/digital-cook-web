@@ -136,7 +136,9 @@
 }
 
 [data-theme="dark"] .recipe-title, 
-[data-theme="dark"] .exclude-ingredients-title {
+[data-theme="dark"] .exclude-ingredients-title,
+[data-theme="dark"] .instructions-title,
+[data-theme="dark"] .you-need-title {
     color: white;
 }
 
