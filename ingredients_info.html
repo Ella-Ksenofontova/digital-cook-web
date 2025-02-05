@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <span class="skip-link visually-hidden" id="skip-link"><a href="#main">Перейти к основному контенту</a></span>
         <header>
             <h1 class="visually-hidden">Цифровой повар - подбор блюд по ингредиентам</h1>
             <div class="wrapper">
@@ -36,7 +37,7 @@
                 Вернуться на главную
             </a>
         </nav>
-        <main class="secondary-page">
+        <main class="secondary-page" id="main">
             <h2 class="secondary-page">Справка по ингредиентам</h2>
         </main>
         <dialog id="fullscreen-image">
@@ -71,5 +72,6 @@
         })
         </script>
         <script src="./theme_toggle.js"></script>
+        <script src="./skip_link.js"></script>
     </body>
 </html>

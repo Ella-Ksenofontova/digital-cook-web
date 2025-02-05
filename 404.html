@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <span class="skip-link visually-hidden" id="skip-link"><a href="#main">Перейти к основному контенту</a></span>
   <header>
     <h1 class="visually-hidden">Цифровой повар - подбор блюд по ингредиентам</h1>
     <button class="menu-button"><span class="visually-hidden">Меню</span></button>
@@ -43,7 +44,7 @@
       </li>
     </ul>
   </nav>
-  <main class="secondary-page">
+  <main class="secondary-page" id="main">
     <h2 class="secondary-page">Ошибка 404: запрашиваемой страницы нет на сайте.</h2>
     <a href="./">Вернуться на главную?</a>
   </main>
@@ -69,5 +70,6 @@
             }
         });
 </script>
+<script src="./skip_link.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <span class="skip-link visually-hidden" id="skip-link"><a href="#main">Перейти к основному контенту</a></span>
     <header>
         <h1 class="visually-hidden">Цифровой повар - подбор блюд по ингредиентам</h1>
         <button class="menu-button"><span class="visually-hidden">Меню</span></button>
@@ -37,7 +38,7 @@
             </li>
         </ul>
     </nav>
-    <main>
+    <main id="main">
         <button id="start">Начать подбор</button><br />
         <button id="find-dishes">Найти блюда</button>
         <div class="dishes-finder" hidden>
@@ -57,6 +58,7 @@
     </script>
     <script src="./theme_toggle.js"></script>
     <script src="./search_dishes.js" type="module"></script>
+    <script src="./skip_link.js"></script>
 </body>
 
 </html>

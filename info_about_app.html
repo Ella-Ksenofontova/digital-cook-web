@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <span class="skip-link visually-hidden" id="skip-link"><a href="#main">Перейти к основному контенту</a></span>
     <header>
         <h1 class="visually-hidden">Цифровой повар - подбор блюд по ингредиентам</h1>
         <button class="menu-button"><span class="visually-hidden">Меню</span></button>
@@ -30,7 +31,7 @@
             Вернуться на главную
         </a>
     </nav>
-    <main class="secondary-page">
+    <main class="secondary-page" id="main">
         <h2 class="secondary-page">О приложении</h2>
         Это веб-приложение позволяет Вам подобрать блюда на основе ваших предпочтений - любимых кухонь и ингредиентов, а
         также предпочитаемых категорий блюд.<br>
@@ -60,6 +61,7 @@
         });
     </script>
     <script src="./theme_toggle.js"></script>
+    <script src="./skip_link.js"></script>
 </body>
 
 </html>

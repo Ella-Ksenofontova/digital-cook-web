@@ -145,3 +145,9 @@
 [data-theme="dark"] .frame-for-pop-up {
     background-color: black;
 }
+
+/* Skip link */
+
+[data-theme="dark"] .skip-link {
+    background-color: black;
+}

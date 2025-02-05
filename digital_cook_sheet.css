@@ -648,3 +648,17 @@ h2 + #back-button, br + #main-menu {
     justify-content: center;
     align-items: center;
 }
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.skip-link a {
+    text-decoration: none;
+}
