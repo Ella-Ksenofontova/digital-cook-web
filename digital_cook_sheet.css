@@ -333,6 +333,10 @@ h1 {
     font-size: 1.8rem;
 }
 
+#runtime-title {
+    max-width: calc(100% - 95px);
+}
+
 /*Dishes*/
 
 /*Form*/
@@ -536,13 +540,8 @@ h2 + #back-button, br + #main-menu {
 /*Recipe and ingredients exclusion pop-ups*/
 
 .recipe-pop-up, .exclude-ingredients-pop-up, #fullscreen-image[open] {
-    z-index: 1000;
-    position: fixed;
-
     margin: 0 auto;
     overflow: auto;
-
-    display: table-cell;
     vertical-align: middle;
 
     padding: 20px;
@@ -552,17 +551,16 @@ h2 + #back-button, br + #main-menu {
 }
 
 .recipe-pop-up, .exclude-ingredients-pop-up {
-    max-height: 80%;
     text-align: left;
 }
 
 .recipe-pop-up {
-    max-width: 75%;
-    top: 20px;
+    height: 90vh;
 }
 
 .exclude-ingredients-pop-up {
     width: 420px;
+    max-height: 80%;
     max-width: calc(100vw - 45px);
     height: fit-content;
     overflow: hidden;
@@ -647,6 +645,18 @@ h2 + #back-button, br + #main-menu {
     column-gap: 10px;
     justify-content: center;
     align-items: center;
+}
+
+.outer {
+    position: fixed;
+    z-index: 1000;
+    top: 20px;
+    left: 2%;
+    right: 15%;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 /* Skip link */

@@ -38,6 +38,9 @@ export function showRecipe(dish) {
     let semiTransparentFrame = document.createElement("div");
     semiTransparentFrame.className = "frame-for-pop-up";
 
+    let outer = document.createElement("div");
+    outer.classList.add("outer");
+
     let recipePopUp = document.createElement("div");
     recipePopUp.className = "recipe-pop-up";
     recipePopUp.id = "recipe-pop-up";
@@ -45,7 +48,8 @@ export function showRecipe(dish) {
     let main = document.querySelector("main");
 
     main.append(semiTransparentFrame);
-    main.append(recipePopUp);
+    main.append(outer);
+    outer.append(recipePopUp);
 
     addCloseButton(recipePopUp);
 
@@ -117,8 +121,8 @@ function addCloseButton() {
  */
 
 function closeRecipePopUp() {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
-    recipePopUp.remove();
+    let outer = document.querySelector(".outer");
+    outer.remove();
 
     let semiTransparentFrame = document.querySelector(".frame-for-pop-up");
     semiTransparentFrame.remove();

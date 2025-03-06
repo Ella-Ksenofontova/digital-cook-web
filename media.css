@@ -138,9 +138,9 @@
         margin: 0;
     }
 
-    .recipe-pop-up {
-        left: 50%;
-        transform: translateX(-50%);
+    .outer {
+        left: 0;
+        right: 0;
     }
 }
 
