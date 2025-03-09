@@ -12,6 +12,7 @@ closeFinderButton.addEventListener("click", () => {
   document.querySelector(".dishes-finder").hidden = true;
   document.querySelector("#search-field").value = "";
   document.querySelector(".search-results ul").innerHTML = "";
+  scrollTo(0, 0);
   changeMainHeight();
 });
 
