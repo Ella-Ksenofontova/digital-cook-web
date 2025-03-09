@@ -541,6 +541,8 @@ h2 + #back-button, br + #main-menu {
 /*Recipe and ingredients exclusion pop-ups*/
 
 .recipe-pop-up, .exclude-ingredients-pop-up, #fullscreen-image[open] {
+    z-index: 999;
+    position: fixed;
     margin: 0 auto;
     overflow: auto;
     vertical-align: middle;
