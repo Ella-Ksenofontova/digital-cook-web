@@ -656,6 +656,7 @@ h2 + #back-button, br + #main-menu {
     top: 20px;
     left: 2%;
     right: 15%;
+    width: 75vw;
     margin: 0 auto;
     border: 1px solid transparent;
     border-radius: 30px;
