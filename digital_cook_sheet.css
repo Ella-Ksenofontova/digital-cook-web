@@ -542,7 +542,6 @@ h2 + #back-button, br + #main-menu {
 
 .recipe-pop-up, .exclude-ingredients-pop-up, #fullscreen-image[open] {
     z-index: 999;
-    position: fixed;
     margin: 0 auto;
     overflow: auto;
     vertical-align: middle;
@@ -558,10 +557,11 @@ h2 + #back-button, br + #main-menu {
 }
 
 .recipe-pop-up {
-    height: 90vh;
+    max-height: 90vh;
 }
 
 .exclude-ingredients-pop-up {
+    position: fixed;
     width: 420px;
     max-height: 80%;
     max-width: calc(100vw - 45px);
