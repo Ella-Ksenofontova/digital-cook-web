@@ -41,6 +41,7 @@ function handleVolumeChange(event) {
   if (x < 0) x = 0;
   if (x > maxWidth) x = maxWidth;
 
+  newVolume = x / maxWidth;
   newVolume = `${newVolume.toFixed(2)}`;
 
   video.volume = newVolume;

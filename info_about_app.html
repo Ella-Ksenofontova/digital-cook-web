@@ -94,6 +94,12 @@
     <script type="module">
         import { changeMainHeight, changeNavHeight, toggleNav } from "./nav_and_main_functions.js";
 
+        setTimeout(() => {
+        if (document.documentElement.dataset.theme == "dark") {
+            console.log(1);
+            document.querySelector(".loading").src = "./assets/801.gif";
+        }})
+
         let menu = document.querySelector(".menu-button");
         menu.addEventListener("click", toggleNav);
 

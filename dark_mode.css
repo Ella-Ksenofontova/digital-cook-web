@@ -151,3 +151,26 @@
 [data-theme="dark"] .skip-link {
     background-color: black;
 }
+
+/* Video */
+
+[data-theme="dark"] .progress, 
+[data-theme="dark"] .video-thumb,
+[data-theme="dark"] .current-volume,
+[data-theme="dark"] .volume-thumb
+ {
+    background-color: rgb(113, 113, 113);
+}
+
+[data-theme="dark"] .volume-baseline {
+    border-color: rgb(113, 113, 113);
+}
+
+[data-theme="dark"] .video-button, 
+[data-theme="dark"] .video-button:hover,
+[data-theme="dark"] .video-button:active {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
