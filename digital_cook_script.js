@@ -159,22 +159,22 @@ export class App {
 
     addCuisines(cuisines, continueButton) {
         for (let cuisineNumber = 1; cuisineNumber <= cuisines.length; cuisineNumber++) {
-            let cuisineCheckbox = document.createElement("input");
+            const cuisineCheckbox = document.createElement("input");
             cuisineCheckbox.type = "checkbox";
             cuisineCheckbox.id = "cuisine-checkbox" + cuisineNumber;
 
-            let cuisinePseudoCheckbox = document.createElement("div");
+            const cuisinePseudoCheckbox = document.createElement("div");
             cuisinePseudoCheckbox.className = "pseudo-checkbox";
 
             continueButton.before(cuisineCheckbox);
             continueButton.before(cuisinePseudoCheckbox);
 
-            let cuisineLabel = document.createElement("label");
+            const cuisineLabel = document.createElement("label");
             cuisineLabel.innerHTML = cuisines[cuisineNumber - 1]
             cuisineLabel.htmlFor = `${cuisineCheckbox.id}`;
             continueButton.before(cuisineLabel);
 
-            let cuisineBr = document.createElement("br");
+            const cuisineBr = document.createElement("br");
             cuisineBr.id = "cuisine-br" + cuisineNumber;
 
             continueButton.before(cuisineBr);
@@ -460,7 +460,7 @@ export class App {
 
     cleanUpForIngredientsMenu(fromFollowing, fromExcludeMenu) {
         if (fromFollowing) {
-            let dishesContainer = document.querySelector(".dishes-container");
+            const dishesContainer = document.querySelector(".dishes-container");
             if (dishesContainer) { 
                 dishesContainer.remove();
             } else {
@@ -468,12 +468,12 @@ export class App {
                 document.getElementById("main-menu").remove();
             }
 
-            let runtimeForm = document.createElement("form");
+            const runtimeForm = document.createElement("form");
             runtimeForm.id = "runtime-form";
 
              main.append(runtimeForm);
 
-            let continueButton = document.createElement("input");
+            const continueButton = document.createElement("input");
             continueButton.type = "submit";
             continueButton.id = "continue";
             continueButton.value = "Продолжить";
@@ -499,10 +499,10 @@ export class App {
      */
 
     fillIngredientsContainer () {
-        let ingredientsCategories = PRESETS.ingredientsCategories;
+        const ingredientsCategories = PRESETS.ingredientsCategories;
 
         for (let ingredientCategoryNumber = 0; ingredientCategoryNumber < ingredientsCategories.length; ingredientCategoryNumber++) {
-            let ingredientsOfCategory = this.appropriateIngredients[ingredientCategoryNumber];
+            const ingredientsOfCategory = this.appropriateIngredients[ingredientCategoryNumber];
 
             createIngredientsCategoryTitle(ingredientsCategories, ingredientCategoryNumber, this.appropriateIngredients);
 
@@ -519,7 +519,7 @@ export class App {
      */
 
     changeFormHandler() {
-        let noAppropriateIngredients = this.appropriateIngredients.reduce((total, item) => item.length == 0 && total, true);
+        const noAppropriateIngredients = this.appropriateIngredients.reduce((total, item) => item.length == 0 && total, true);
         const appropriateIngredientsArray = this.appropriateIngredients.reduce((total, current) => total.concat(current), []);
         if (noAppropriateIngredients) {
             document.getElementById("runtime-form").onsubmit = event => this.finalize(event);

@@ -33,11 +33,63 @@
     </nav>
     <main class="secondary-page" id="main">
         <h2 class="secondary-page">О приложении</h2>
-        Это веб-приложение позволяет Вам подобрать блюда на основе ваших предпочтений - любимых кухонь и ингредиентов, а
-        также предпочитаемых категорий блюд.<br>
-        Автор приложения - <a href="https://github.com/Ella-Ksenofontova">Элла Ксенофонтова</a>. <br>
-        Отзывы и пожелания присылайте <a
-            href="mailto:ellaksenofontova@gmail.com?subject=О &#8220;Цифровом поваре&#8220;">на мой email</a>.
+        <p>
+            Это веб-приложение позволяет Вам подобрать блюда на основе ваших предпочтений - любимых кухонь и
+            ингредиентов, а
+            также предпочитаемых категорий блюд.<br>
+            Автор приложения - <a href="https://github.com/Ella-Ksenofontova">Элла Ксенофонтова</a>. <br>
+            Отзывы и пожелания присылайте <a
+                href="mailto:ellaksenofontova@gmail.com?subject=О &#8220;Цифровом поваре&#8220;">на мой email</a>.
+        </p>
+        <h2 class="secondary-page">Видео про сайт</h2>
+        <p><a href="https://www.youtube.com/watch?v=OMR-yM-b_Ns">Это видео также можно посмотреть здесь</a></p>
+        <div><img class="loading" src="./assets/800.gif" alt="Видео загружается"></div>
+        <div class="video-wrapper">
+            <video class="video">
+                <source src="/assets/digital-cook-video.mp4" type="video/mp4">
+            </video>
+            <div class="controls">
+                <button class="video-button play-pause">
+                    <img src="./assets/play.png" alt="Воспроизвести видео">
+                </button>
+                <div class="progress-baseline">
+                    <div class="progress"></div>
+                    <div class="video-thumb"></div>
+                </div>
+                <button class="video-button volume">
+                    <img src="./assets/volume.png" alt="Отрегулировать громкость видео">
+                    <div class="volume-menu video-menu">
+                        <strong class="menu-title">Громкость</strong>
+                        <div class="volume-wrapper">
+                            <div class="volume-value">100</div>
+                            <div class="volume-baseline">
+                                <div class="current-volume"></div>
+                                <div class="volume-thumb"></div>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <button class="video-button fullscreen">
+                    <img src="./assets/expand.png" alt="Полноэкранный режим">
+                </button>
+                <button class="video-button speed">
+                    <img src="./assets/time-fast.png" alt="Отрегулировать скорость воспроизведения">
+                    <div class="video-menu speed-menu">
+                        <strong class="menu-title">Скорость видео</strong>
+                        <ul class="speed-list">
+                            <li class="speed-option">0.25</li>
+                            <li class="speed-option">0.5</li>
+                            <li class="speed-option">0.75</li>
+                            <li class="speed-option">1</li>
+                            <li class="speed-option">1.25</li>
+                            <li class="speed-option">1.5</li>
+                            <li class="speed-option">1.75</li>
+                            <li class="speed-option">2</li>
+                        </ul>
+                    </div>
+                </button>
+            </div>
+        </div>
     </main>
     <script type="module">
         import { changeMainHeight, changeNavHeight, toggleNav } from "./nav_and_main_functions.js";
@@ -50,7 +102,7 @@
 
         document.addEventListener("DOMContentLoaded", changeMainHeight);
 
-        window.addEventListener("click", function(event) {
+        window.addEventListener("click", function (event) {
             if (event.target.tagName != "NAV" && !event.target.classList.contains("menu-button") && !document.querySelector("nav").classList.contains("hidden")) {
                 if (window.matchMedia("min-width: 500px").matches) {
                     setTimeout(() => toggleNav(), 500);
@@ -62,6 +114,8 @@
     </script>
     <script src="./theme_toggle.js"></script>
     <script src="./skip_link.js"></script>
+    <script src="./video.js" type="module"></script>
+    <script src="./volume.js"></script>
 </body>
 
 </html>

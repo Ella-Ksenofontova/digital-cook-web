@@ -14,10 +14,10 @@ import dishesLinks from "./dishes_links.js";
  */
 
 function getRecipe(dish) {
-    let dishInfo = DISHES.find(item => item[0].toLowerCase() === dish.toLowerCase());
-    let ingredientsDetails = dishInfo[1];
-    let recipe = dishInfo[2];
-    let description = dishInfo[5];
+    const dishInfo = DISHES.find(item => item[0].toLowerCase() === dish.toLowerCase());
+    const ingredientsDetails = dishInfo[1];
+    const recipe = dishInfo[2];
+    const description = dishInfo[5];
 
     return {
         ingredientsDetails: ingredientsDetails,
@@ -33,19 +33,19 @@ function getRecipe(dish) {
  */
 
 export function showRecipe(dish) {
-    let recipe = getRecipe(dish);
+    const recipe = getRecipe(dish);
 
-    let semiTransparentFrame = document.createElement("div");
+    const semiTransparentFrame = document.createElement("div");
     semiTransparentFrame.className = "frame-for-pop-up";
 
-    let outer = document.createElement("div");
+    const outer = document.createElement("div");
     outer.classList.add("outer");
 
-    let recipePopUp = document.createElement("div");
+    const recipePopUp = document.createElement("div");
     recipePopUp.className = "recipe-pop-up";
     recipePopUp.id = "recipe-pop-up";
 
-    let main = document.querySelector("main");
+    const main = document.querySelector("main");
 
     main.append(semiTransparentFrame);
     main.append(outer);
@@ -53,7 +53,7 @@ export function showRecipe(dish) {
 
     addCloseButton(recipePopUp);
 
-    let title = document.createElement("div");
+    const title = document.createElement("div");
     title.className = "recipe-title";
     title.innerHTML = dish;
     recipePopUp.append(title);
@@ -63,12 +63,12 @@ export function showRecipe(dish) {
     addYouNeedTitle();
     addDishFigure(dish);
 
-    let ingredientsDetails = recipe.ingredientsDetails.split("\n");
+    const ingredientsDetails = recipe.ingredientsDetails.split("\n");
     addListItems(ingredientsDetails);
 
     addInstructionsTitle();
 
-    let instructions = recipe.instructions.split("\n");
+    const instructions = recipe.instructions.split("\n");
     addListItems(instructions); 
 }
 
@@ -78,9 +78,9 @@ export function showRecipe(dish) {
  */
 
 function addYouNeedTitle() {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
+    const recipePopUp = document.querySelector(".recipe-pop-up");
 
-    let youNeedTitle = document.createElement("div");
+    const youNeedTitle = document.createElement("div");
     youNeedTitle.className = "you-need-title";
     youNeedTitle.innerHTML = "Вам понадобится:";
     recipePopUp.append(youNeedTitle);
@@ -92,9 +92,9 @@ function addYouNeedTitle() {
  */
 
 function addInstructionsTitle() {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
+    const recipePopUp = document.querySelector(".recipe-pop-up");
 
-    let instructionsTitle = document.createElement("div");
+    const instructionsTitle = document.createElement("div");
     instructionsTitle.className = "instructions-title";
     instructionsTitle.innerHTML = "Рецепт:"
     recipePopUp.append(instructionsTitle);
@@ -106,9 +106,9 @@ function addInstructionsTitle() {
  */
 
 function addCloseButton() {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
+    const recipePopUp = document.querySelector(".recipe-pop-up");
 
-    let closeButton = document.createElement("button");
+    const closeButton = document.createElement("button");
     closeButton.className = "close-button";
     closeButton.insertAdjacentHTML("beforeend", "<span class=\"visually-hidden\">Закрыть</span>")
     recipePopUp.append(closeButton);
@@ -121,10 +121,10 @@ function addCloseButton() {
  */
 
 function closeRecipePopUp() {
-    let outer = document.querySelector(".outer");
+    const outer = document.querySelector(".outer");
     outer.remove();
 
-    let semiTransparentFrame = document.querySelector(".frame-for-pop-up");
+    const semiTransparentFrame = document.querySelector(".frame-for-pop-up");
     semiTransparentFrame.remove();
 }
 
@@ -135,17 +135,17 @@ function closeRecipePopUp() {
  */
 
 function addDishFigure(dishName) {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
+    const recipePopUp = document.querySelector(".recipe-pop-up");
 
-    let dishFigure = document.createElement("figure");
+    const dishFigure = document.createElement("figure");
     dishFigure.className = "recipe";
 
     if ( dishName.includes('"') ) {
         dishName = dishName.replace(/"/g, "");
     }
-    let dishImageSrc = `./assets/Dish_images/${dishName}.jpg`;
+    const dishImageSrc = `./assets/Dish_images/${dishName}.jpg`;
 
-    let dishImage = document.createElement("img");
+    const dishImage = document.createElement("img");
     dishImage.src = dishImageSrc;
     dishImage.height = "100";
     dishImage.width = "200";
@@ -154,7 +154,7 @@ function addDishFigure(dishName) {
 
     dishFigure.append(dishImage);
 
-    let caption = document.createElement("figcaption");
+    const caption = document.createElement("figcaption");
     caption.className = "recipe";
     caption.innerHTML = `<a href="${dishesLinks[dishName]}">Источник фото</a>`;
     dishFigure.append(caption);
@@ -168,11 +168,11 @@ function addDishFigure(dishName) {
  */
 
 function addListItems(list, typeOfList) {
-    let recipePopUp = document.querySelector(".recipe-pop-up");
-    let divForItems = document.createElement("div");
+    const recipePopUp = document.querySelector(".recipe-pop-up");
+    const divForItems = document.createElement("div");
     recipePopUp.append(divForItems);
 
-    for (let listItem of list) {
+    for (const listItem of list) {
         if (typeOfList == "instructions") {
             divForItems.append(listItem);
         } else {
