@@ -15,10 +15,12 @@ document.querySelector(".fullscreen").addEventListener("click", () => {
     document.querySelector(".video-wrapper").requestFullscreen();
     const videoMenus = Array.from(document.querySelectorAll(".video-menu"));
     videoMenus.forEach(item => item.classList.add("fullscreen"));
+    document.querySelector(".video-button.fullscreen img").src = "./assets/compress.png"
   } else {
     document.exitFullscreen();
     const videoMenus = Array.from(document.querySelectorAll(".video-menu"));
     videoMenus.forEach(item => item.classList.remove("fullscreen"));
+    document.querySelector(".video-button.fullscreen img").src = "./assets/expand.png"
   }
 })
 
@@ -108,7 +110,7 @@ function changeCurrentTime(event) {
 
 video.addEventListener("ended", () => {
   clearInterval(tick);
-  document.querySelector(".play-pause").firstElementChild.src = "./assets/play.png"; //надо будет поменять
+  document.querySelector(".play-pause").firstElementChild.src = "./assets/rotate-right.png";
   document.querySelector(".play-pause").firstElementChild.alt = "Воспроизвести заново";
   document.querySelector(".play-pause").addEventListener("click", returnToStart);
 });

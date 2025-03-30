@@ -48,6 +48,11 @@ function handleVolumeChange(event) {
   moveVolumeThumb(x);
   changeVolumeProgressWidth(x);
   document.querySelector(".volume-value").innerHTML = (newVolume * 100).toFixed(0);
+  if (newVolume == 0) {
+    document.querySelector(".video-button.volume img").src = "./assets/volume-slash.png"
+  } else {
+    document.querySelector(".video-button.volume img").src = "./assets/volume.png"
+  }
 }
 
 volumeBaseline.addEventListener("click", handleVolumeChange);
