@@ -775,6 +775,7 @@ h2 + #back-button, br + #main-menu {
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
     cursor: default;
+    color: black;
 }
 
 .video-menu.show {
