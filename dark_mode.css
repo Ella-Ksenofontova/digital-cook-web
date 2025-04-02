@@ -174,3 +174,9 @@
     padding: 0;
     margin: 0;
 }
+
+/* Selection */
+[data-theme="dark"] ::selection {
+    background: white;
+    color:black;
+}
