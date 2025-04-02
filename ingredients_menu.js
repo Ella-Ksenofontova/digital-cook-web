@@ -220,17 +220,20 @@ export function toggleChooseAllDiv(event) {
 
         let chooseAllCheckbox, checkboxes;
         let currentCheckbox;
+        let checkedState;
 
         if (target.previousElementSibling.id.startsWith("ingredient-checkbox")) {
             currentCheckbox = target.previousElementSibling;
+            checkedState = currentCheckbox.checked;
         } else if (target.previousElementSibling.previousElementSibling.id.startsWith("ingredient-checkbox")) {
             currentCheckbox = target.previousElementSibling.previousElementSibling;
+            checkedState = !currentCheckbox.checked;
         }
 
         ({chooseAllCheckbox, checkboxes} = getCheckboxesAndCheckboxOfCategory(currentCheckbox));
 
-        let checkboxesStates = checkboxes.map(item => item === currentCheckbox ? !item.checked : item.checked);
-        if (!checkboxesStates.includes(true) && chooseAllCheckbox.checked) {
+        let checkboxesStates = checkboxes.map(item => item === currentCheckbox ? checkedState : item.checked);
+        if (checkboxesStates.includes(false) && chooseAllCheckbox.checked) {
             chooseAllCheckbox.checked = false;
         } else if (!checkboxesStates.includes(false) && !chooseAllCheckbox.checked) {
             chooseAllCheckbox.checked = true;
