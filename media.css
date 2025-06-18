@@ -141,6 +141,7 @@
     .outer {
         left: 0;
         right: 0;
+        width: calc(100vw - 20px);
     }
 }
 

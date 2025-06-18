@@ -557,6 +557,8 @@ h2 + #back-button, br + #main-menu {
 
 .recipe-pop-up, .exclude-ingredients-pop-up {
     text-align: left;
+    width: fit-content;
+    max-width: 100vw;
 }
 
 .recipe-pop-up {
