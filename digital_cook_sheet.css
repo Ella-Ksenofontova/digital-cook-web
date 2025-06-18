@@ -377,6 +377,14 @@ input[type="checkbox"]:checked + .pseudo-checkbox {
     display: none;
 }
 
+input[type="text"] {
+    font-family: inherit;
+    border: none;
+    border-radius: 7px;
+    border-bottom: 3px solid #2f6e9e;
+    text-overflow: ellipsis;
+}
+
 /*Ingredients info*/
 
 dl {
