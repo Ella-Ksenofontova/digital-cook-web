@@ -796,7 +796,7 @@ h2 + #back-button, br + #main-menu {
 }
 
 .video-menu.fullscreen {
-    left: -50%
+    left: -50%;
 }
 
 .menu-title {
@@ -849,4 +849,9 @@ h2 + #back-button, br + #main-menu {
 
 .speed-option {
     cursor: pointer;
+}
+
+.speed-menu.fullscreen {
+    right: 0;
+    left: auto;
 }
