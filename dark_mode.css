@@ -32,6 +32,10 @@
     color: white;
 }
 
+[data-theme="dark"] input[type="text"] {
+    border-bottom: 3px solid #a19e9e;
+}
+
 /*Theme Toggler*/
 
 [data-theme="dark"] .theme-toggler {
